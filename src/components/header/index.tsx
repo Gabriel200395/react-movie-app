@@ -1,6 +1,7 @@
 import LOGO from "../../assets/img/logo.png";
 import { AppBar, Toolbar, Container } from "@mui/material";
 import { makeStyles } from "@mui/styles";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   const useStyles = makeStyles({
@@ -31,7 +32,8 @@ export default function Header() {
         alignItems: "center",
         justifyContent: "center",
         height: "80px",
-        backgroundColor: "#121829",
+        backgroundColor: "#121829", 
+        marginBottom:"40px"
       }}
       position="relative"
     >
@@ -46,24 +48,24 @@ export default function Header() {
           <img src={LOGO} alt={LOGO} />
           <ul className={classes.ul}>
             <li className={classes.li}>
-              <a href="" className={classes.link}>
+              <Link to="/" className={classes.link}>
                 Movies
-              </a>
+              </Link>
             </li>
             <li className={classes.li}>
-              <a href="" className={classes.link}>
+              <Link to="/now-playing" className={classes.link}>
                 Now playing
-              </a>
+              </Link>
             </li>
             <li className={classes.li}>
-              <a href="" className={classes.link}>
+              <Link to="/top-rated" className={classes.link}>
                 Top rated
-              </a>
+              </Link>
             </li>
             <li className={classes.li}>
-              <a href="" className={classes.link}>
+              <Link to="/upcoming" className={classes.link}>
                 Upcoming
-              </a>
+              </Link>
             </li>
           </ul>
         </Toolbar>

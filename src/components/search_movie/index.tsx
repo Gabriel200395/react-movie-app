@@ -43,7 +43,6 @@ const useStyles = makeStyles({
     display: "flex",
     alignItems: "center",
     justifyContent: "center", 
-    marginTop: "40px", 
     marginBottom:"40px"
 
   },

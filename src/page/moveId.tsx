@@ -3,7 +3,7 @@ import Movies from "../components/movies";
 import SearchMovie from "../components/search_movie";
 import Header from "../components/header";
 
-export default function Home() {
+export default function MoveId() {
   const {
     handleChangePageFilme,
     handleChangePageHome,
@@ -23,7 +23,7 @@ export default function Home() {
         fieldMovie={fieldMovie}
       />
 
-      <Movies
+<Movies
         moviesData={moviesData}
         page={debounceTerm ? pageFilme : pageHome}
         onChange={debounceTerm ? handleChangePageFilme : handleChangePageHome}

@@ -21,21 +21,11 @@ type Response = {
 
 interface MoviesProps {
   moviesData: Response | undefined;
-  debounceTerm: string;
-  pageFilme: number;
-  pageHome: number;
-  handleChangePageFilme: (event: ChangeEvent<unknown>, value: number) => void;
-  handleChangePageHome: (event: ChangeEvent<unknown>, value: number) => void;
+  onChange: (event: ChangeEvent<unknown>, value: number) => void;
+  page: number;
 }
 
-export default function Movies({
-  moviesData,
-  debounceTerm,
-  pageFilme,
-  pageHome,
-  handleChangePageFilme,
-  handleChangePageHome,
-}: MoviesProps) {
+export default function Movies({ page, onChange, moviesData }: MoviesProps) {
   const useStyles = makeStyles({
     stack: {
       display: "flex",
@@ -136,10 +126,8 @@ export default function Movies({
             variant="outlined"
             shape="rounded"
             count={moviesData?.total_pages}
-            page={debounceTerm ? pageFilme : pageHome}
-            onChange={
-              debounceTerm ? handleChangePageFilme : handleChangePageHome
-            }
+            page={page}
+            onChange={onChange}
           />
         </Stack>
       </Container>
