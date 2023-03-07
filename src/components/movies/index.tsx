@@ -1,8 +1,10 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { makeStyles } from "@mui/styles";
 import { Pagination, Stack, Container } from "@mui/material";
+import Skeleton from "@mui/material/Skeleton";
 import no_image from "../../assets/img/no_image.jpg";
 import star from "../../assets/img/star.png";
+import { truncate } from "fs/promises";
 
 interface Movies {
   backdrop_path: string;
@@ -23,9 +25,17 @@ interface MoviesProps {
   moviesData: Response | undefined;
   onChange: (event: ChangeEvent<unknown>, value: number) => void;
   page: number;
+  fieldMovie?: string;
 }
 
-export default function Movies({ page, onChange, moviesData }: MoviesProps) {
+export default function Movies({
+  page,
+  onChange,
+  moviesData,
+  fieldMovie,
+}: MoviesProps) {
+  const [loading, setLoading] = useState(true);
+
   const useStyles = makeStyles({
     stack: {
       display: "flex",
@@ -95,12 +105,35 @@ export default function Movies({ page, onChange, moviesData }: MoviesProps) {
 
   const classes = useStyles();
 
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 1500);
+  }, [page, fieldMovie]);
+
+  useEffect(() => {
+    if (page === 1 || page > 1 || fieldMovie?.length) {
+      setLoading(true);
+    }
+  }, [page, fieldMovie]);
+
   return (
     <div>
       <Container maxWidth="xl">
         <div className={classes.containerCard}>
           {moviesData?.results.map((filme) => {
-            return (
+            return loading ? (
+              <Skeleton
+                key={filme.id}
+                sx={{
+                  bgcolor: "rgba(32, 40, 62, 0.8)",
+                  borderRadius: "12px",
+                }}
+                variant="rectangular"
+                width={282}
+                height={480}
+              />
+            ) : (
               <a className={classes.cardItem} key={filme.id}>
                 <img
                   className={classes.cardImg}
@@ -120,17 +153,19 @@ export default function Movies({ page, onChange, moviesData }: MoviesProps) {
           })}
         </div>
       </Container>
-      <Container maxWidth="xl">
-        <Stack spacing={2} className={classes.stack}>
-          <Pagination
-            variant="outlined"
-            shape="rounded"
-            count={moviesData?.total_pages}
-            page={page}
-            onChange={onChange}
-          />
-        </Stack>
-      </Container>
+      {moviesData?.results.length && (
+        <Container maxWidth="xl">
+          <Stack spacing={2} className={classes.stack}>
+            <Pagination
+              variant="outlined"
+              shape="rounded"
+              count={moviesData?.total_pages}
+              page={page}
+              onChange={onChange}
+            />
+          </Stack>
+        </Container>
+      )}
     </div>
   );
 }
