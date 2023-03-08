@@ -9,7 +9,7 @@ export function textData(type: string, data: Movie | undefined) {
     case "RunTime":
       return convertMinutes(data?.runtime);
     case "Genres":
-      return data?.genres.map((item) => item.name).join(" , ");
+      return data?.genres?.map((item) => item.name).join(" , ");
     default:
       return null;
   }
