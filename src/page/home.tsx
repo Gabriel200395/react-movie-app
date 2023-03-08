@@ -1,5 +1,5 @@
 import usePageHome from "../hooks/usePageHome";
-import Movies from "../components/movies";
+import Movies from "../components/cardMovies";
 import SearchMovie from "../components/search_movie";
 import Header from "../components/header";
 

@@ -1,33 +1,21 @@
-import usePageHome from "../hooks/usePageHome";
-import Movies from "../components/movies";
-import SearchMovie from "../components/search_movie";
 import Header from "../components/header";
+import { useParams } from "react-router-dom";
+import CardMovesId from "../components/cardMovesId";
+import MovieDetails from "../components/movieDetails";
+import BannerIDMovie from "../components/bannerID";
+import useMoveId from "../hooks/useMoveId";
 
 export default function MoveId() {
-  const {
-    handleChangePageFilme,
-    handleChangePageHome,
-    handleChangeField,
-    moviesData,
-    pageFilme,
-    pageHome,
-    debounceTerm,
-    fieldMovie,
-  } = usePageHome();
+  const { id } = useParams<{ id?: string }>();
+
+  const { getMovieId, getCredentialsMovie } = useMoveId(id);
 
   return (
     <div>
       <Header />
-      <SearchMovie
-        handleChangeField={handleChangeField}
-        fieldMovie={fieldMovie}
-      />
-
-<Movies
-        moviesData={moviesData}
-        page={debounceTerm ? pageFilme : pageHome}
-        onChange={debounceTerm ? handleChangePageFilme : handleChangePageHome}
-      />
+      <BannerIDMovie data={getMovieId.data} />
+      <MovieDetails data={getMovieId.data} />
+      <CardMovesId cast={getCredentialsMovie.data?.cast} />
     </div>
   );
 }

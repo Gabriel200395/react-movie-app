@@ -1,4 +1,4 @@
-import Movies from "../components/movies";
+import Movies from "../components/cardMovies";
 import Header from "../components/header";
 import { useQuery } from "react-query";
 import service from "../services/service";

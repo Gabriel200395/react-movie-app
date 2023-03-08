@@ -13,7 +13,7 @@ export default function Routes() {
         <Route path="/now-playing" element={<NowPlaying />} />
         <Route path="/top-rated" element={<TopRated />} />
         <Route path="/upcoming" element={<Upcoming />} />
-        <Route path="/move/:id" element={<MoveId />} />
+        <Route path="/movie/:id" element={<MoveId />} />
       </Router>
     </BrowserRouter>
   );
