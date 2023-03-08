@@ -7,12 +7,7 @@ import no_image from "../../assets/img/no_image.jpg";
 import star from "../../assets/img/star.png";
 import { MoviesProps } from "../../types/cardMovies";
 
-export default function Movies({
-  page,
-  onChange,
-  moviesData,
-  fieldMovie,
-}: MoviesProps) {
+export default function Movies({ page, onChange, moviesData }: MoviesProps) {
   const [loading, setLoading] = useState(true);
 
   const classes = styles();
@@ -21,14 +16,7 @@ export default function Movies({
     setTimeout(() => {
       setLoading(false);
     }, 1500);
-  }, [page, fieldMovie]);
-
-  useEffect(() => {
-    if (page === 1 || page > 1 || fieldMovie?.length) {
-      setLoading(true);
-    }
-  }, [page, fieldMovie]);
-
+  }, []);
   return (
     <div>
       <Container maxWidth="xl">

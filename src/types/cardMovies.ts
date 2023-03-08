@@ -1,5 +1,4 @@
 import { ChangeEvent } from "react";
-import { Movie } from "./movie";
 
 interface Movies {
   backdrop_path: string;
@@ -20,5 +19,4 @@ export interface MoviesProps {
   moviesData: Response | undefined;
   onChange: (event: ChangeEvent<unknown>, value: number) => void;
   page: number;
-  fieldMovie?: string;
 }
