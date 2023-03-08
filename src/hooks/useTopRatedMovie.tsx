@@ -1,7 +1,9 @@
 import { useQuery } from "react-query";
 import service from "../services/service";
 import { useEffect, useState } from "react";
-import { Response } from "../types/response";
+import { Response } from "../types/response"; 
+import {useLocalStorage} from "../hooks/useLocalStorage"
+
 
 const fetchTopRatedMovie = async (page: number): Promise<Response> => {
   const response = await service.get("movie/top_rated", {
@@ -14,7 +16,7 @@ const fetchTopRatedMovie = async (page: number): Promise<Response> => {
   return response.data;
 };
 export default function useTopRatedMovie() {
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useLocalStorage("pageTopRatedMovie", 1);
   const [topRatedMovie, setTopRatedMovie] = useState<Response>();
 
   const getTopRatedMovie = useQuery({

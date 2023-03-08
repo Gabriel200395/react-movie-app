@@ -2,6 +2,7 @@ import { useQuery } from "react-query";
 import service from "../services/service";
 import { useEffect, useState } from "react";
 import { Response } from "../types/response";
+import { useLocalStorage } from "./useLocalStorage";
 
 const fetchUpcomingMovie = async (page: number): Promise<Response> => {
   const response = await service.get("movie/upcoming", {
@@ -15,7 +16,7 @@ const fetchUpcomingMovie = async (page: number): Promise<Response> => {
 };
 
 export default function useUpcomingMovie() {
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useLocalStorage("pageUpcomingMovie", 1);
   const [upcomingMovie, setUpcomingMovie] = useState<Response>();
 
   const getUpcomingMovie = useQuery({
