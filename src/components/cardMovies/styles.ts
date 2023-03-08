@@ -27,6 +27,7 @@ export const styles = makeStyles({
     padding: "8px 8px 8px",
     position: "relative",
     backgroundColor: "rgba(32, 40, 62, 0.8)",
+    textDecoration: "none",
   },
 
   cardText: {

@@ -7,7 +7,11 @@ import no_image from "../../assets/img/no_image.jpg";
 import star from "../../assets/img/star.png";
 import { MoviesProps } from "../../types/cardMovies";
 
-export default function CardMovies({ page, onChange, moviesData }: MoviesProps) {
+export default function CardMovies({
+  page,
+  onChange,
+  moviesData,
+}: MoviesProps) {
   const [loading, setLoading] = useState(true);
 
   const classes = styles();
@@ -18,45 +22,48 @@ export default function CardMovies({ page, onChange, moviesData }: MoviesProps) 
     }, 1500);
   }, []);
 
-  console.log("teste")
   return (
-    <div>
+    <>
       <Container maxWidth="xl">
         <div className={classes.containerCard}>
-          {moviesData?.results.map((filme) => {
-            return loading ? (
-              <Skeleton
-                key={filme.id}
-                sx={{
-                  bgcolor: "rgba(32, 40, 62, 0.8)",
-                  borderRadius: "12px",
-                }}
-                variant="rectangular"
-                width={282}
-                height={480}
-              />
-            ) : (
-              <Link
-                to={"/movie/" + filme.id}
-                className={classes.cardItem}
-                key={filme.id}
-              >
-                <img
-                  className={classes.cardImg}
-                  src={
-                    filme.poster_path
-                      ? "http://image.tmdb.org/t/p/w300/" + filme.poster_path
-                      : no_image
-                  }
+          {moviesData?.results.map((filme, index) => (
+            <>
+              {loading ? (
+                <Skeleton
+                  key={index}
+                  sx={{
+                    bgcolor: "rgba(32, 40, 62, 0.8)",
+                    borderRadius: "12px",
+                  }}
+                  variant="rectangular"
+                  width={282}
+                  height={480}
                 />
-                <p className={classes.cardText}>{filme.title}</p>
-                <div className={classes.cardStars}>
-                  <img src={star} alt={star} />
-                  <span className={classes.cardVote}>{filme.vote_average}</span>
-                </div>
-              </Link>
-            );
-          })}
+              ) : (
+                <Link
+                  to={"/movie/" + filme.id}
+                  className={classes.cardItem}
+                  key={index}
+                >
+                  <img
+                    className={classes.cardImg}
+                    src={
+                      filme.poster_path
+                        ? "http://image.tmdb.org/t/p/w300/" + filme.poster_path
+                        : no_image
+                    }
+                  />
+                  <p className={classes.cardText}>{filme.title}</p>
+                  <div className={classes.cardStars}>
+                    <img src={star} alt={star} />
+                    <span className={classes.cardVote}>
+                      {filme.vote_average}
+                    </span>
+                  </div>
+                </Link>
+              )}
+            </>
+          ))}
         </div>
       </Container>
       {moviesData?.results.length && (
@@ -72,6 +79,6 @@ export default function CardMovies({ page, onChange, moviesData }: MoviesProps) 
           </Stack>
         </Container>
       )}
-    </div>
+    </>
   );
 }

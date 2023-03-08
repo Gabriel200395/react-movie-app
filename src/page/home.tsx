@@ -1,7 +1,7 @@
-import usePageHome from "../hooks/usePageHome";
 import Movies from "../components/cardMovies";
 import SearchMovie from "../components/search_movie";
 import Header from "../components/header";
+import useMovies from "../hooks/useMovies";
 
 export default function Home() {
   const {
@@ -13,7 +13,7 @@ export default function Home() {
     pageHome,
     debounceTerm,
     fieldMovie,
-  } = usePageHome();
+  } = useMovies();
 
   return (
     <div>
@@ -24,7 +24,7 @@ export default function Home() {
       />
 
       <Movies
-        moviesData={moviesData} 
+        moviesData={moviesData}
         page={debounceTerm ? pageFilme : pageHome}
         onChange={debounceTerm ? handleChangePageFilme : handleChangePageHome}
       />
