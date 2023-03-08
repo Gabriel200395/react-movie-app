@@ -4,6 +4,7 @@ import { useQuery } from "react-query";
 import useDebounce from "./useDebounce";
 import { Response } from "../types/response";
 import useSearchMovie from "./useSearchMovie";
+import { useLocalStorage } from "./useLocalStorage";
 
 const fetchMovies = async (pageHome: number): Promise<Response> => {
   let response = await service.get("movie/popular", {
@@ -16,14 +17,19 @@ const fetchMovies = async (pageHome: number): Promise<Response> => {
 };
 
 export default function useMovies() {
-  const [fieldMovie, setFieldMovie] = useState("");
   const [moviesData, setMoviesData] = useState<Response>();
-  const [pageHome, setPageHome] = useState(1);
+  const [pageHome, setPageHome] = useLocalStorage("pageHome", 1);
+  const [fieldMovie, setFieldMovie] = useLocalStorage("fieldMovie", "");
 
   const debounceTerm = useDebounce(fieldMovie, 800);
 
-  const { searchMovies, handleChangePageFilme, setPageFilme, pageFilme, errorSearch } =
-    useSearchMovie(debounceTerm, fieldMovie);
+  const {
+    searchMovies,
+    handleChangePageFilme,
+    setPageFilme,
+    pageFilme,
+    errorSearch,
+  } = useSearchMovie(debounceTerm, fieldMovie);
 
   const movies = useQuery<Response>({
     queryKey: ["movies", pageHome],
@@ -51,10 +57,10 @@ export default function useMovies() {
   }, [movies, searchMovies]);
 
   useEffect(() => {
-    if (debounceTerm) {
+    if (!fieldMovie.length) {
       setPageFilme(1);
     }
-  }, [debounceTerm]);
+  }, [fieldMovie]);
 
   return {
     handleChangePageFilme,
@@ -65,7 +71,7 @@ export default function useMovies() {
     pageFilme,
     pageHome,
     debounceTerm,
-    fieldMovie,  
-    errorSearch
+    fieldMovie,
+    errorSearch,
   };
 }
