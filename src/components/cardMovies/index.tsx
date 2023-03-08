@@ -7,7 +7,7 @@ import no_image from "../../assets/img/no_image.jpg";
 import star from "../../assets/img/star.png";
 import { MoviesProps } from "../../types/cardMovies";
 
-export default function Movies({ page, onChange, moviesData }: MoviesProps) {
+export default function CardMovies({ page, onChange, moviesData }: MoviesProps) {
   const [loading, setLoading] = useState(true);
 
   const classes = styles();
@@ -17,6 +17,8 @@ export default function Movies({ page, onChange, moviesData }: MoviesProps) {
       setLoading(false);
     }, 1500);
   }, []);
+
+  console.log("teste")
   return (
     <div>
       <Container maxWidth="xl">

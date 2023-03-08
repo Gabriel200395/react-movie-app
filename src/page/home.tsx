@@ -25,7 +25,6 @@ export default function Home() {
 
       <Movies
         moviesData={moviesData} 
-        fieldMovie={fieldMovie}
         page={debounceTerm ? pageFilme : pageHome}
         onChange={debounceTerm ? handleChangePageFilme : handleChangePageHome}
       />
