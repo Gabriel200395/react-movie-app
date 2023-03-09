@@ -10,5 +10,5 @@ type MovieData = {
 export interface MoviesProps {
   moviesData: MovieData | undefined;
   onChange: (event: ChangeEvent<unknown>, value: number) => void;
-  page: number;
+  page: number; 
 }

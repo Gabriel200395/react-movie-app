@@ -79,5 +79,13 @@ export const styles = makeStyles({
 
   spacing: {
     marginBottom: "24px",
+  }, 
+
+  button: {
+    backgroundColor: "#1E253A !important",
+    color: "#A7ACB8 !important",
   },
+  span: {
+    marginLeft: "5px"
+  }
 });

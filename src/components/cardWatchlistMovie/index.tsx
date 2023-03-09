@@ -5,13 +5,13 @@ import { Pagination, Stack, Container } from "@mui/material";
 import Skeleton from "@mui/material/Skeleton";
 import no_image from "../../assets/img/no_image.jpg";
 import star from "../../assets/img/star.png";
-import { MoviesProps } from "../../types/cardMovies";
+import { Movie } from "../../types/movie";
 
-export default function CardMovies({
-  page,
-  onChange,
-  moviesData,
-}: MoviesProps) {
+interface props {
+  watchlistStorage: Movie[] | undefined;
+}
+
+export default function CardWatchlistMovie({ watchlistStorage }: props) {
   const [loading, setLoading] = useState(true);
 
   const classes = styles();
@@ -20,15 +20,15 @@ export default function CardMovies({
     setTimeout(() => {
       setLoading(false);
     }, 1500);
-  }, []); 
-  
+  }, []);
+
   return (
     <>
       <Container maxWidth="xl">
         <div className={classes.containerCard}>
           {loading ? (
             <>
-              {moviesData?.results.map((filme) => (
+              {watchlistStorage?.map((filme) => (
                 <Skeleton
                   sx={{
                     bgcolor: "rgba(32, 40, 62, 0.8)",
@@ -43,7 +43,7 @@ export default function CardMovies({
             </>
           ) : (
             <>
-              {moviesData?.results.map((filme) => (
+              {watchlistStorage?.map((filme) => (
                 <Link
                   to={"/movie/" + filme.id}
                   className={classes.cardItem}
@@ -71,19 +71,6 @@ export default function CardMovies({
           )}
         </div>
       </Container>
-      {moviesData?.results.length && (
-        <Container maxWidth="xl">
-          <Stack spacing={2} className={classes.stack}>
-            <Pagination
-              variant="outlined"
-              shape="rounded"
-              count={moviesData?.total_pages}
-              page={page}
-              onChange={onChange}
-            />
-          </Stack>
-        </Container>
-      )}
     </>
   );
 }

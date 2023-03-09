@@ -1,33 +1,41 @@
-import Movies from "../components/cardMovies";
-import SearchMovie from "../components/search_movie";
+import { useEffect, useState, ChangeEvent } from "react";
 import Header from "../components/header";
-import useMovies from "../hooks/useMovies";
+import { Movie } from "../types/movie";
+import CardWatchlistMovie from "../components/cardWatchlistMovie";
+import SearchMovie from "../components/search_movie";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
-export default function Home() {
-  const {
-    handleChangePageFilme,
-    handleChangePageHome,
-    handleChangeField,
-    moviesData,
-    pageFilme,
-    pageHome,
-    debounceTerm,
-    fieldMovie,
-  } = useMovies();
+export default function Watchlist() {
+  const [watchlistStorage, setWatchlistStorage] = useState<Movie[]>();
+  const [filter, setFilter] = useState<Movie[]>();
+  const [fieldMovie, setfieldMovie] = useLocalStorage("watchlistField", "");
 
+  let storage = JSON.parse(localStorage.getItem("Watchlist") as string);
+
+  useEffect(() => {
+    setWatchlistStorage(storage.slice(0, 20));
+    setFilter(storage.slice(0, 20));
+  }, []);
+
+  const handleChangeField = (e: ChangeEvent<HTMLInputElement>) => {
+    setfieldMovie(e.target.value);
+    setFilter(
+      watchlistStorage?.filter((item: any) =>
+        item.title
+          ?.toLowerCase()
+          .toUpperCase()
+          .includes(e.target.value.toLowerCase().toUpperCase())
+      )
+    );
+  };
   return (
     <div>
       <Header />
       <SearchMovie
-        handleChangeField={handleChangeField}
         fieldMovie={fieldMovie}
+        handleChangeField={handleChangeField}
       />
-
-      <Movies
-        moviesData={moviesData}
-        page={debounceTerm ? pageFilme : pageHome}
-        onChange={debounceTerm ? handleChangePageFilme : handleChangePageHome}
-      />
+      <CardWatchlistMovie watchlistStorage={filter} />
     </div>
   );
 }

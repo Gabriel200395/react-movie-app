@@ -1,18 +1,38 @@
 import { styles } from "./styles";
 import star from "../../assets/img/star.png";
 import { MovieDetailsProps } from "../../types/movieDetails";
-import { Typography, Container, Box, Grid } from "@mui/material";
+import { Typography, Container, Box, Grid, Button } from "@mui/material";
 import { textData } from "../../utils/textDataMovieId,";
 import { dataItems } from "../../helpers/textsMovies";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
+import { Movie } from "../../types/movie";
 
 export default function MovieDetails({ data }: MovieDetailsProps) {
   const classes = styles();
+  const [watchlist, setWatchlist] = useLocalStorage("Watchlist", []);
+
+  let FilmeDuplicate = new Set();
+
+  const handleClickAddWatchlist = () =>
+    setWatchlist(
+      [...watchlist, data].filter((item: any) => {
+        const duplicates = FilmeDuplicate.has(item.id);
+
+        FilmeDuplicate.add(item.id);
+        return !duplicates;
+      })
+    );
+
   return (
     <Container>
       <Box className={classes.containerDetails}>
         <Grid>
           <img
-            src={data?.poster_path && "http://image.tmdb.org/t/p/w780/" + data?.poster_path}
+            src={
+              data?.poster_path &&
+              "http://image.tmdb.org/t/p/w780/" + data?.poster_path
+            }
             alt="img"
             className={classes.img}
           />
@@ -41,6 +61,10 @@ export default function MovieDetails({ data }: MovieDetailsProps) {
               </Grid>
             );
           })}
+
+          <Button className={classes.button} onClick={handleClickAddWatchlist}>
+            <AddCircleIcon /> <span className={classes.span}>Watchlist</span>
+          </Button>
         </Grid>
       </Box>
     </Container>

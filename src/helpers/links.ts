@@ -14,6 +14,6 @@ export const Links: Items[] = [
   },
   {
     text: "Watchlist",
-    link: "/",
+    link: "/watchlist",
   },
 ];
