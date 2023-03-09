@@ -5,10 +5,6 @@ type Items = {
 
 export const Links: Items[] = [
   {
-    text: "Movies",
-    link: "/",
-  },
-  {
     text: "Now playing",
     link: "/now-playing",
   },
@@ -17,7 +13,7 @@ export const Links: Items[] = [
     link: "/top-rated",
   },
   {
-    text: "Upcoming",
-    link: "/upcoming",
+    text: "Watchlist",
+    link: "/",
   },
 ];
