@@ -52,6 +52,7 @@ export default function CardMovies({
                         ? "http://image.tmdb.org/t/p/w300/" + filme.poster_path
                         : no_image
                     }
+                    alt="img-card-movie"
                   />
                   <p className={classes.cardText}>{filme.title}</p>
                   <div className={classes.cardStars}>

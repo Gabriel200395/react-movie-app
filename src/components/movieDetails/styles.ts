@@ -4,7 +4,8 @@ export const styles = makeStyles({
   containerDetails: {
     display: "flex",
     justifyContent: "space-around",
-    marginTop: "120px",
+    marginTop: "120px", 
+    flexWrap:"wrap"
   },
 
   text: {
@@ -15,7 +16,13 @@ export const styles = makeStyles({
     fontSize: "20px",
     lineHeight: "32px",
     color: "#8E95A9",
-    marginBottom: "80px",
+    marginBottom: "80px", 
+
+    '@media (max-width: 768px)' : {
+      fontSize: "16px", 
+      width:"100%", 
+      paddingBottom:"80px"
+    }
   },
   subTitle: {
     fontFamily: "Poppins, sans-serif",
@@ -26,7 +33,14 @@ export const styles = makeStyles({
 
   img: {
     borderRadius: "24px",
-    height: "780px",
+    height: "780px", 
+
+    '@media (max-width: 768px)' : {
+      fontSize: "16px", 
+      height: "300px",
+      marginBottom: "30px"
+
+    }
   },
   textType: {
     fontFamily: "Poppins, sans-serif",
@@ -56,7 +70,7 @@ export const styles = makeStyles({
     fontFamily: "Poppins, sans-serif",
     fontWeight: "400px",
     fontSize: "14px",
-    marginBottom: "24px",
+    marginBottom: "24px", 
   },
 
   vote: {

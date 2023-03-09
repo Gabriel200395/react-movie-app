@@ -10,10 +10,13 @@ export default function BannerIDMovie({ data }: BannerIDMovieProps) {
       <div
         className={classes.container}
         style={{
-          background: `linear-gradient(180deg,rgba(54, 44, 146, 0.4) 0%, rgba(18, 98, 151, 0.4) 100%), url(${
+          backgroundImage: `linear-gradient(180deg,rgba(54, 44, 146, 0.4) 0%, 
+          rgba(18, 98, 151, 0.4) 100%),url(${
             data?.backdrop_path &&
             "http://image.tmdb.org/t/p/w1280/" + data?.backdrop_path
-          })`,
+          }) `,
+          backgroundSize: "cover",
+          backgroundPosition: "50% 50%",
         }}
       >
         <div className={classes.containerTitle}>

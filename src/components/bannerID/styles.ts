@@ -7,6 +7,11 @@ export const styles = makeStyles({
     height: "480px",
     borderRadius: "40px",
     width: "1200px",
+
+    '@media (max-width: 768px)' : {
+      width:"350px",
+      height:"400px"
+    }
   },
 
   containerTitle: {
@@ -20,13 +25,28 @@ export const styles = makeStyles({
     left: "40px",
     display: "flex",
     justifyContent: "center",
-    alignItems: "center",
+    alignItems: "center", 
+     
+    
+    '@media (max-width: 768px)' : {
+      width: "250px", 
+      height: "100px",
+      left: "0px",
+    }
+
+
   },
 
   title: {
     fontFamily: "Poppins, sans-serif",
     fontWeight: "600",
     fontSize: "32px",
-    color: "#EBEEF5",
+    color: "#EBEEF5", 
+
+    '@media (max-width: 768px)' : {
+      fontSize: "16px",
+
+    }
+
   },
 });
