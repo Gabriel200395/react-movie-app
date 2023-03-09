@@ -1,5 +1,6 @@
 import service from "../services/service";
 import { useQuery } from "react-query";
+import { useEffect } from "react";
 
 type CredentialsMovie = {
   cast: { name: string; profile_path: string; id: number }[];
@@ -47,6 +48,12 @@ export default function useMoveId(id: string | undefined) {
     queryKey: [["CredentialsMovie", id]],
     queryFn: () => fetchCredentialsMovie(id),
   });
+  
+  
+  useEffect(() => {
+    window.scroll(0, 0)
+  }, [])
+
 
   return {
     getMovieId,

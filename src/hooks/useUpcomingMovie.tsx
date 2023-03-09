@@ -12,6 +12,8 @@ const fetchUpcomingMovie = async (page: number): Promise<Response> => {
     },
   });
 
+  console.log(response.data)
+
   return response.data;
 };
 
@@ -25,7 +27,8 @@ export default function useUpcomingMovie() {
   });
 
   useEffect(() => {
-    if (getUpcomingMovie.data?.results) {
+    if (getUpcomingMovie.data?.results) { 
+      console.log(getUpcomingMovie.data?.results)
       setUpcomingMovie(getUpcomingMovie.data);
     }
   }, [getUpcomingMovie]);

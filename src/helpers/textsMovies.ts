@@ -18,7 +18,7 @@ export const dataItems: Items[] = [
     type: "RunTime",
   },
   {
-    title: "Runtime",
+    title: "Genres",
     type: "Genres",
   },
 ];

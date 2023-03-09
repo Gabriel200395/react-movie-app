@@ -6,6 +6,7 @@ import Skeleton from "@mui/material/Skeleton";
 import no_image from "../../assets/img/no_image.jpg";
 import star from "../../assets/img/star.png";
 import { MoviesProps } from "../../types/cardMovies";
+import { ConnectingAirportsOutlined } from "@mui/icons-material";
 
 export default function CardMovies({
   page,
@@ -20,17 +21,18 @@ export default function CardMovies({
     setTimeout(() => {
       setLoading(false);
     }, 1500);
-  }, []);
+  }, []); 
+
+  console.log(moviesData?.results)
 
   return (
     <>
       <Container maxWidth="xl">
         <div className={classes.containerCard}>
-          {moviesData?.results.map((filme, index) => (
+          {loading ? (
             <>
-              {loading ? (
+              {moviesData?.results.map((filme) => (
                 <Skeleton
-                  key={index}
                   sx={{
                     bgcolor: "rgba(32, 40, 62, 0.8)",
                     borderRadius: "12px",
@@ -38,12 +40,17 @@ export default function CardMovies({
                   variant="rectangular"
                   width={282}
                   height={480}
+                  key={filme.id}
                 />
-              ) : (
+              ))}
+            </>
+          ) : (
+            <>
+              {moviesData?.results.map((filme) => (
                 <Link
                   to={"/movie/" + filme.id}
                   className={classes.cardItem}
-                  key={index}
+                  key={filme.id}
                 >
                   <img
                     className={classes.cardImg}
@@ -62,9 +69,9 @@ export default function CardMovies({
                     </span>
                   </div>
                 </Link>
-              )}
+              ))}
             </>
-          ))}
+          )}
         </div>
       </Container>
       {moviesData?.results.length && (

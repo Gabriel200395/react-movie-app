@@ -1,6 +1,5 @@
 import service from "../services/service";
 import { useQuery } from "react-query";
-import { useState } from "react";
 import { Response } from "../types/response";  
 import {useLocalStorage} from "../hooks/useLocalStorage"
 

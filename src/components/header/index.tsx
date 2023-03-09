@@ -17,7 +17,10 @@ export default function Header() {
             alignItems: "center",
           }}
         >
-          <img src={LOGO} alt={LOGO} />
+          <Link to="/">
+            <img src={LOGO} alt={LOGO} />
+          </Link>
+
           <ul className={classes.ul}>
             {Links.map(({ link, text }, index) => {
               return (

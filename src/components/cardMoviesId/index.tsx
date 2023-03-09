@@ -11,16 +11,17 @@ export default function CardMovesId({ cast }: cardPropsMovesId) {
       <h3 className={classes.title3}>Actors</h3>
 
       <div className={classes.containerCard}>
-        {cast?.map((item) => {
+        {cast?.map((item, index) => {
           return (
-            <div key={item.id} className={classes.cardItem}>
+            <div key={index} className={classes.cardItem}>
               <img
                 src={
                   item.profile_path
                     ? "http://image.tmdb.org/t/p/w154/" + item.profile_path
                     : no_image
                 }
-                className={classes.cardImg}
+                className={classes.cardImg} 
+                alt="img-card-movie"
               />
               <h3 className={classes.cardText}>{item.name}</h3>
             </div>
