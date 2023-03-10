@@ -1,39 +1,26 @@
 import { useEffect, useState } from "react";
-import { useQuery } from "react-query";
 import useDebounce from "./useDebounce";
 import { Response } from "../types/response";
-import useSearchMovie from "./useSearchMovie";
+import { useSearchMovie } from "./useSearchMovie";
 import { useLocalStorage } from "./useLocalStorage";
-
-const fetchMovies = async (pageHome: number): Promise<Response> => {
-  let data = await fetch(
-    `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_ACCESS_KEY}&language=en-US&page=${pageHome}`
-  );
-
-  const response = await data.json();
-
-  return response;
-};
+import { useFetch } from "../hooks/useFetchMovie";
 
 export default function useMovies() {
   const [moviesData, setMoviesData] = useState<Response>();
   const [pageHome, setPageHome] = useLocalStorage("pageHome", 1);
   const [fieldMovie, setFieldMovie] = useLocalStorage("fieldMovie", "");
+  const [pageFilme, setPageFilme] = useLocalStorage("pageFilme", 1);
 
   const debounceTerm = useDebounce(fieldMovie, 800);
+  const movies = useFetch(pageHome);
+  const searchMovie = useSearchMovie(debounceTerm, fieldMovie, pageFilme);
 
-  const {
-    searchMovies,
-    handleChangePageFilme,
-    setPageFilme,
-    pageFilme,
-    errorSearch,
-  } = useSearchMovie(debounceTerm, fieldMovie);
-
-  const movies = useQuery<Response>({
-    queryKey: ["movies", pageHome],
-    queryFn: () => fetchMovies(pageHome),
-  });
+  const handleChangePageFilme = (
+    event: React.ChangeEvent<unknown>,
+    value: number
+  ) => {
+    setPageFilme(value);
+  };
 
   const handleChangePageHome = (
     event: React.ChangeEvent<unknown>,
@@ -46,14 +33,14 @@ export default function useMovies() {
     setFieldMovie(e.target.value);
 
   useEffect(() => {
-    if (debounceTerm && searchMovies.data?.results) {
-      setMoviesData(searchMovies.data);
+    if (debounceTerm && searchMovie.data?.results) {
+      setMoviesData(searchMovie.data);
     }
 
     if (movies.data?.results && !debounceTerm) {
       setMoviesData(movies.data);
     }
-  }, [movies, searchMovies]);
+  }, [movies, searchMovie]);
 
   useEffect(() => {
     if (!fieldMovie.length) {
@@ -71,7 +58,7 @@ export default function useMovies() {
     pageHome,
     debounceTerm,
     fieldMovie,
-    errorSearch,
-    errorMovies: movies.error,
+    errorMovies: movies?.error,
+    errorSearch: searchMovie?.error
   };
 }

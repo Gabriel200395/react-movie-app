@@ -1,6 +1,5 @@
 import { Typography } from "@mui/material";
 import Movies from "../components/cardMovies";
-import Header from "../components/header";
 import useTopRatedMovie from "../hooks/useTopRatedMovie";
 
 export default function NowPlaying() {
@@ -15,7 +14,6 @@ export default function NowPlaying() {
 
   return (
     <div>
-      <Header />
       <Movies
         moviesData={topRatedMovie}
         page={page}

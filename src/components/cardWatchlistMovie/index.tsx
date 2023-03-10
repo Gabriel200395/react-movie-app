@@ -53,7 +53,7 @@ export default function CardWatchlistMovie({ watchlistStorage }: props) {
               ))}
             </div>
           ) : (
-            <div className={classes.spacing}>
+            <>
               {films?.map((filme, index) => (
                 <div className={classes.cardItem} key={filme.id}>
                   <img
@@ -80,7 +80,7 @@ export default function CardWatchlistMovie({ watchlistStorage }: props) {
                   </div>
                 </div>
               ))}
-            </div>
+            </>
           )}
         </div>
       </Container>

@@ -1,6 +1,5 @@
 import { useQuery } from "react-query";
 import { Response } from "../types/response";
-import { useLocalStorage } from "../hooks/useLocalStorage";
 
 const fetchSearchMovie = async (
   debounceTerm: string,
@@ -20,29 +19,12 @@ const fetchSearchMovie = async (
   return null;
 };
 
-export default function useSearchMovie(
+export const useSearchMovie = (
   debounceTerm: string,
-  fieldMovie: string
-) {
-  const [pageFilme, setPageFilme] = useLocalStorage("pageFilme", 1);
-
-  const searchMovies = useQuery({
+  fieldMovie: string,
+  pageFilme: number
+) =>
+  useQuery({
     queryKey: ["searchMovie", debounceTerm, pageFilme],
     queryFn: () => fetchSearchMovie(debounceTerm, fieldMovie, pageFilme),
   });
-
-  const handleChangePageFilme = (
-    event: React.ChangeEvent<unknown>,
-    value: number
-  ) => {
-    setPageFilme(value);
-  };
-
-  return {
-    searchMovies,
-    errorSearch: searchMovies.error,
-    handleChangePageFilme,
-    setPageFilme,
-    pageFilme,
-  };
-}

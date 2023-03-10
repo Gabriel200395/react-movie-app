@@ -1,4 +1,3 @@
-import Header from "../components/header";
 import { useParams } from "react-router-dom";
 import CardMovesId from "../components/cardMoviesId";
 import MovieDetails from "../components/movieDetails";
@@ -21,7 +20,6 @@ export default function MoveId() {
 
   return (
     <div>
-      <Header />
       <BannerIDMovie data={getMovieId.data} />
       <MovieDetails data={getMovieId.data} />
       <CardMovesId cast={getCredentialsMovie.data?.cast} />
