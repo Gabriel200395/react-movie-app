@@ -10,7 +10,6 @@ export const styles = makeStyles({
 
   text: {
     width: "480px",
-    height: "224px",
     fontFamily: "Poppins, sans-serif",
     fontWeight: "400",
     fontSize: "20px",
@@ -21,7 +20,6 @@ export const styles = makeStyles({
     '@media (max-width: 768px)' : {
       fontSize: "16px", 
       width:"100%", 
-      paddingBottom:"80px"
     }
   },
   subTitle: {

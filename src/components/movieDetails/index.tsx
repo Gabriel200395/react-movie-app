@@ -42,7 +42,7 @@ export default function MovieDetails({ data }: MovieDetailsProps) {
           <Typography variant="h5" className={classes.subTitle}>
             Part of the journey is the end.
           </Typography>
-          <Typography className={classes.text}>{data?.overview}</Typography>
+          <Typography sx={{mt: 1, mb: 3}} variant="subtitle1" className={classes.text}>{data?.overview}</Typography>
           <Grid className={classes.stars}>
             <img src={star} alt={star} />
             <span className={classes.vote}>{data?.vote_average}</span>

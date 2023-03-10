@@ -10,8 +10,8 @@ export default function useWatchList(){
     let storage = JSON.parse(localStorage.getItem("Watchlist") as string);
   
     useEffect(() => {
-      setWatchlistStorage(storage.slice(0, 20));
-      setFilterMovie(storage.slice(0, 20));
+      setWatchlistStorage(storage);
+      setFilterMovie(storage);
     }, []);
   
     const handleChangeField = (e: ChangeEvent<HTMLInputElement>) => {

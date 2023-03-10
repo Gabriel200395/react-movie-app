@@ -11,7 +11,7 @@ export default function Watchlist() {
   return (
     <div>
       <Header />
-      {storage.length ? (
+      {storage?.length ? (
         <>
           <SearchMovie
             fieldMovie={fieldMovie}
