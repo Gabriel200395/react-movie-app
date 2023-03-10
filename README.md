@@ -1,6 +1,7 @@
 ## :wrench: Tecnologias
 
 - [React](https://pt-br.reactjs.org/)
+- [React Query](https://react-query-v3.tanstack.com/)
 - [Typescript](https://www.typescriptlang.org/)
 - [Material-UI](https://mui.com/material-ui/getting-started/overview/)
 
