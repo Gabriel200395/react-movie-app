@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import service from "../services/service";
 import { useQuery } from "react-query";
 import useDebounce from "./useDebounce";
 import { Response } from "../types/response";
@@ -7,13 +6,13 @@ import useSearchMovie from "./useSearchMovie";
 import { useLocalStorage } from "./useLocalStorage";
 
 const fetchMovies = async (pageHome: number): Promise<Response> => {
-  let response = await service.get("movie/popular", {
-    params: {
-      api_key: process.env.REACT_APP_ACCESS_KEY,
-      page: pageHome,
-    },
-  });
-  return await response.data;
+  let data = await fetch(
+    `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_ACCESS_KEY}&language=en-US&page=${pageHome}`
+  );
+
+  const response = await data.json();
+
+  return response;
 };
 
 export default function useMovies() {
@@ -73,6 +72,6 @@ export default function useMovies() {
     debounceTerm,
     fieldMovie,
     errorSearch,
-    errorMovies: movies.error
+    errorMovies: movies.error,
   };
 }

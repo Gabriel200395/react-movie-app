@@ -1,18 +1,16 @@
 import { useQuery } from "react-query";
-import service from "../services/service";
 import { useEffect, useState } from "react";
 import { Response } from "../types/response";
-import {useLocalStorage} from "./useLocalStorage"
+import { useLocalStorage } from "./useLocalStorage";
 
 const fetchPlayingMovie = async (page: number): Promise<Response> => {
-  const response = await service.get("movie/now_playing", {
-    params: {
-      api_key: process.env.REACT_APP_ACCESS_KEY,
-      page: page,
-    },
-  });
+  const data = await fetch(
+    `https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.REACT_APP_ACCESS_KEY}&language=en-US&page=${page}`
+  );
 
-  return response.data;
+  const response = data.json();
+
+  return response;
 };
 
 export default function usePlayingMovie() {
@@ -40,7 +38,7 @@ export default function usePlayingMovie() {
   return {
     playingMovie,
     handleChangePagePlayingMovie,
-    page, 
-    error: getMoviePlaying.error
+    page,
+    error: getMoviePlaying.error,
   };
 }

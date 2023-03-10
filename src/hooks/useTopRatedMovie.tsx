@@ -1,20 +1,17 @@
 import { useQuery } from "react-query";
-import service from "../services/service";
 import { useEffect, useState } from "react";
-import { Response } from "../types/response"; 
-import {useLocalStorage} from "../hooks/useLocalStorage"
-
+import { Response } from "../types/response";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
 const fetchTopRatedMovie = async (page: number): Promise<Response> => {
-  const response = await service.get("movie/top_rated", {
-    params: {
-      api_key: process.env.REACT_APP_ACCESS_KEY,
-      page: page,
-    },
-  });
+  const data = await fetch(
+    `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.REACT_APP_ACCESS_KEY}&language=en-US&page=${page}`
+  );
 
-  return response.data;
+  let response = data.json();
+  return response;
 };
+
 export default function useTopRatedMovie() {
   const [page, setPage] = useLocalStorage("pageTopRatedMovie", 1);
   const [topRatedMovie, setTopRatedMovie] = useState<Response>();
@@ -41,6 +38,6 @@ export default function useTopRatedMovie() {
     page,
     handleChangePageTopRatedMovie,
     topRatedMovie,
-    error: getTopRatedMovie.error
+    error: getTopRatedMovie.error,
   };
 }

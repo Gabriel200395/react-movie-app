@@ -1,4 +1,3 @@
-import service from "../services/service";
 import { useQuery } from "react-query";
 import { useEffect } from "react";
 
@@ -16,26 +15,26 @@ type MovieId = {
   runtime: number;
   vote_average: number;
 };
-const fetchMovieID = async (id: string | undefined): Promise<MovieId> => {
-  const response = await service.get(`movie/${id}`, {
-    params: {
-      api_key: process.env.REACT_APP_ACCESS_KEY,
-    },
-  });
 
-  return response.data;
+const fetchMovieID = async (id: string | undefined): Promise<MovieId> => {
+  const data = await fetch(
+    `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_ACCESS_KEY}`
+  );
+
+  const response = data.json();
+  return response;
 };
 
 const fetchCredentialsMovie = async (
   id: string | undefined
 ): Promise<CredentialsMovie> => {
-  const response = await service.get(`movie/${id}/credits`, {
-    params: {
-      api_key: process.env.REACT_APP_ACCESS_KEY,
-    },
-  });
+  const data = await fetch(
+    `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_ACCESS_KEY}`
+  );
 
-  return response.data;
+  const response = data.json();
+
+  return response;
 };
 
 export default function useMoveId(id: string | undefined) {
