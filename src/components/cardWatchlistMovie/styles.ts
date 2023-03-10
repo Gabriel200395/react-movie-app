@@ -65,5 +65,27 @@ export const styles = makeStyles({
 
   cardVote: {
     marginLeft: "5px",
+  }, 
+
+  containerButtons: {
+    display:"flex", 
+    justifyContent:"space-between", 
+    alingItems: "center",
+    marginTop: "20px"
   },
+
+  link: {
+    borderRadius: "4px",
+    display: "flex",
+    justifyContent: "center",
+    color: "#ebeef5",
+    fontFamily: "Poppins, sans-serif",
+    fontWeight: "400px",
+    fontSize: "14px",
+    backgroundColor: "rgba(0, 0, 0, 0.65)",
+    textDecoration:"none",
+    padding:"10px 10px 10px 10px",
+    border:"none",
+    cursor: "pointer"
+  }  
 });
