@@ -4,11 +4,20 @@ import CardMovesId from "../components/cardMoviesId";
 import MovieDetails from "../components/movieDetails";
 import BannerIDMovie from "../components/bannerID";
 import useMoveId from "../hooks/useMoveId";
+import { Typography } from "@mui/material";
 
 export default function MoveId() {
   const { id } = useParams<{ id?: string }>();
 
-  const { getMovieId, getCredentialsMovie } = useMoveId(id); 
+  const { getMovieId, getCredentialsMovie, errorGetCredentialsMovie, errorGetMovieId } = useMoveId(id);
+
+  if (errorGetCredentialsMovie || errorGetMovieId) {
+    return (
+      <Typography variant="h4" textAlign="center" color="#ebeef5">
+        Server connection error 👀
+      </Typography>
+    );
+  }
 
   return (
     <div>

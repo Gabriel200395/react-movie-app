@@ -48,15 +48,18 @@ export default function useMoveId(id: string | undefined) {
     queryKey: [["CredentialsMovie", id]],
     queryFn: () => fetchCredentialsMovie(id),
   });
-  
-  
-  useEffect(() => {
-    window.scroll(0, 0)
-  }, [])
 
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, []);
+
+  let errorGetMovieId = getMovieId.error;
+  let errorGetCredentialsMovie = getCredentialsMovie.error;
 
   return {
     getMovieId,
     getCredentialsMovie,
+    errorGetMovieId,
+    errorGetCredentialsMovie,
   };
 }

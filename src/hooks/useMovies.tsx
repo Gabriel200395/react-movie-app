@@ -73,5 +73,6 @@ export default function useMovies() {
     debounceTerm,
     fieldMovie,
     errorSearch,
+    errorMovies: movies.error
   };
 }

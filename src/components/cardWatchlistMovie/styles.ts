@@ -8,7 +8,6 @@ export const styles = makeStyles({
     height: "80px",
     backgroundColor: "rgba(32, 40, 62, 0.8)",
     margin: "40px 0px 40px 0px",
-    width: "100%",
   },
 
   containerCard: {
@@ -17,6 +16,7 @@ export const styles = makeStyles({
     gridGap: "30px 30px",
     justifyContent: "center",
     backgroundColor: "transparent",
+    paddingBottom: "30px"
   },
   cardItem: {
     display: "flex",
@@ -87,5 +87,9 @@ export const styles = makeStyles({
     padding:"10px 10px 10px 10px",
     border:"none",
     cursor: "pointer"
-  }  
+  },   
+
+  spacing: {
+    paddingBottom: "60px"
+  }
 });

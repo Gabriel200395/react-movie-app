@@ -2,7 +2,7 @@ import { useQuery } from "react-query";
 import service from "../services/service";
 import { useEffect, useState } from "react";
 import { Response } from "../types/response";
-import {useLocalStorage} from "../hooks/useLocalStorage"
+import {useLocalStorage} from "./useLocalStorage"
 
 const fetchPlayingMovie = async (page: number): Promise<Response> => {
   const response = await service.get("movie/now_playing", {
@@ -40,6 +40,7 @@ export default function usePlayingMovie() {
   return {
     playingMovie,
     handleChangePagePlayingMovie,
-    page,
+    page, 
+    error: getMoviePlaying.error
   };
 }

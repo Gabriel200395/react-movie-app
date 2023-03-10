@@ -41,5 +41,6 @@ export default function useTopRatedMovie() {
     page,
     handleChangePageTopRatedMovie,
     topRatedMovie,
+    error: getTopRatedMovie.error
   };
 }
