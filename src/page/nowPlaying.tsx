@@ -17,16 +17,18 @@ export default function NowPlaying() {
   };
 
   if (error) {
-    <Typography variant="h4" textAlign="center" color="#ebeef5">
+    return (
+      <Typography variant="h4" textAlign="center" color="#ebeef5">
       Server connection error 👀
-    </Typography>;
+    </Typography>
+    )
   }
 
   return (
     <>
       <Header />
       <Movies moviesData={data} />
-      {data?.results.length && (
+      {data?.results?.length && (
         <PaginationMovies
           total_pages={data.total_pages}
           page={page}

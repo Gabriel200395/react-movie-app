@@ -26,7 +26,7 @@ export default function CardMovies({
         <div className={classes.containerCard}>
           {loading ? (
             <>
-              {moviesData?.results.map((filme) => (
+              {moviesData?.results?.map((filme) => (
                 <Skeleton
                   sx={{
                     bgcolor: "rgba(32, 40, 62, 0.8)",
@@ -41,7 +41,7 @@ export default function CardMovies({
             </>
           ) : (
             <>
-              {moviesData?.results.map((filme) => (
+              {moviesData?.results?.map((filme) => (
                 <Link
                   to={"/movie/" + filme.id}
                   className={classes.cardItem}

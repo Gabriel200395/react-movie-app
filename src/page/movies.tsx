@@ -16,7 +16,7 @@ export default function Home() {
   const [fieldMovie, setFieldMovie] = useLocalStorage("fieldMovie", "");
   const [pageFilme, setPageFilme] = useLocalStorage("pageFilme", 1);
 
-  const debounceTerm = useDebounce(fieldMovie, 800);
+  const debounceTerm = useDebounce(fieldMovie, 500);
   const searchMovie = useSearchMovie(debounceTerm, fieldMovie, pageFilme);
   const movies = useMovies(pageHome);
 

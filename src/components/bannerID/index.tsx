@@ -1,6 +1,7 @@
 import { Container } from "@mui/system";
 import { styles } from "./styles";
-import { BannerIDMovieProps } from "../../types/bannerIDMovieProps";
+import { BannerIDMovieProps } from "../../types/bannerIDMovieProps"; 
+import no_image from "../../assets/img/no_image.jpg"
 
 export default function BannerIDMovie({ data }: BannerIDMovieProps) {
   const classes = styles();
@@ -12,11 +13,12 @@ export default function BannerIDMovie({ data }: BannerIDMovieProps) {
         style={{
           backgroundImage: `linear-gradient(180deg,rgba(54, 44, 146, 0.4) 0%, 
           rgba(18, 98, 151, 0.4) 100%),url(${
-            data?.backdrop_path &&
-            "http://image.tmdb.org/t/p/w1280/" + data?.backdrop_path
+            data?.backdrop_path ?
+            "http://image.tmdb.org/t/p/w1280/" + data?.backdrop_path : no_image
           }) `,
-          backgroundSize: "cover",
-          backgroundPosition: "50% 50%",
+          backgroundSize:  data?.backdrop_path ? "cover" : "contain",
+          backgroundPosition: "50% 50%", 
+          backgroundRepeat: !data?.backdrop_path ? "no-repeat" : "auto", 
         }}
       >
         <div className={classes.containerTitle}>
