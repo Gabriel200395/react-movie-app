@@ -1,17 +1,7 @@
 import "./global.css";
 import ReactDOM from "react-dom/client";
 import reportWebVitals from "./reportWebVitals";
-import { QueryClient, QueryClientProvider } from "react-query";
-import { BrowserRouter, Route, Routes as Router } from "react-router-dom";
-import Home from "./page/movies";
-import MoveId from "./page/moveId";
-import NowPlaying from "./page/nowPlaying";
-import TopRated from "./page/topRated";
-import Watchlist from "./page/watchlist";
-import Header from "./components/header";
 import App from "./App";
-
-const queryClient = new QueryClient();
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
