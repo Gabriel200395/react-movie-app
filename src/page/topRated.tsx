@@ -2,6 +2,7 @@ import { useTopRatedMovie, useLocalStorage } from "../hooks";
 import { Typography } from "@mui/material";
 import Movies from "../components/cardMovies";
 import Header from "../components/header";
+import PaginationMovies from "../components/paginationMovies";
 
 export default function NowPlaying() {
   const [page, setPage] = useLocalStorage("pageTopRatedMovie", 1);
@@ -23,8 +24,9 @@ export default function NowPlaying() {
   return (
     <>
       <Header />
-      <Movies
-        moviesData={data}
+      <Movies moviesData={data} />
+      <PaginationMovies
+        total_pages={data?.total_pages}
         page={page}
         onChange={handleChangePageTopRatedMovie}
       />

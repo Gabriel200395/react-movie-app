@@ -6,10 +6,10 @@ import {
   useSearchMovie,
   useMovies,
 } from "../hooks";
-import { Response } from "../types/response";
 import Movies from "../components/cardMovies";
 import SearchMovie from "../components/search_movie";
 import Header from "../components/header";
+import PaginationMovies from "../components/paginationMovies";
 
 export default function Home() {
   const [pageHome, setPageHome] = useLocalStorage("pageHome", 1);
@@ -59,8 +59,10 @@ export default function Home() {
         handleChangeField={handleChangeField}
         fieldMovie={fieldMovie}
       />
-      <Movies
-        moviesData={filterPage}
+      <Movies moviesData={filterPage} />
+
+      <PaginationMovies
+        total_pages={filterPage?.total_pages}
         page={debounceTerm ? pageFilme : pageHome}
         onChange={debounceTerm ? handleChangePageFilme : handleChangePageHome}
       />

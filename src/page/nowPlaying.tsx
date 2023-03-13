@@ -2,6 +2,7 @@ import { Typography } from "@mui/material";
 import { useState } from "react";
 import Movies from "../components/cardMovies";
 import Header from "../components/header";
+import PaginationMovies from "../components/paginationMovies";
 import { usePlayingMovie, useLocalStorage } from "../hooks";
 
 export default function NowPlaying() {
@@ -24,8 +25,9 @@ export default function NowPlaying() {
   return (
     <>
       <Header />
-      <Movies
-        moviesData={data}
+      <Movies moviesData={data} />
+      <PaginationMovies
+        total_pages={data?.total_pages}
         page={page}
         onChange={handleChangePagePlayingMovie}
       />

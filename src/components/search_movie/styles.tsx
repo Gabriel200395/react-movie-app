@@ -26,22 +26,3 @@ export const styles = makeStyles({
   },
 });
 
-export const SearchField = styled("div")({
-  width: "600px",
-  height: "60px",
-  position: "relative",
-});
-export const Field = styled("input")({
-  position: "relative",
-  outline: "none",
-  backgroundColor: "transparent",
-  paddingLeft: "80px",
-  height: "100%",
-  width: "500px",
-  color: "#475069",
-  fontSize: "35px",
-  borderRadius: "5px",
-  border: "solid 1px #475069",
-  fontFamily: "Poppins , sans-serif",
-  fontWeight: "400",
-});

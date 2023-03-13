@@ -1,15 +1,13 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { styles } from "./styles";
-import { Pagination, Stack, Container } from "@mui/material"; 
+import { Container } from "@mui/material"; 
 import Skeleton from "@mui/material/Skeleton";
 import no_image from "../../assets/img/no_image.jpg";
 import star from "../../assets/img/star.png";
 import { MoviesProps } from "../../types/cardMovies";
 
 export default function CardMovies({
-  page,
-  onChange,
   moviesData,
 }: MoviesProps) {
   const [loading, setLoading] = useState(true);
@@ -71,19 +69,6 @@ export default function CardMovies({
           )}
         </div>
       </Container>
-      {moviesData?.results.length && (
-        <Container maxWidth="xl">
-          <Stack spacing={2} className={classes.stack}>
-            <Pagination
-              variant="outlined"
-              shape="rounded"
-              count={moviesData?.total_pages}
-              page={page}
-              onChange={onChange}
-            />
-          </Stack>
-        </Container>
-      )}
     </>
   );
 }
