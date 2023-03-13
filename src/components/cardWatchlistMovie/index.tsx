@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { styles } from "./styles";
 import { Container } from "@mui/material";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import DeleteIcon from "@mui/icons-material/Delete";
 import Skeleton from "@mui/material/Skeleton";
 import no_image from "../../assets/img/no_image.jpg";
 import star from "../../assets/img/star.png";
@@ -32,7 +34,6 @@ export default function CardWatchlistMovie({ watchlistStorage }: props) {
     setFilms(removeId);
     localStorage.setItem("Watchlist", JSON.stringify(removeId));
   };
-
 
   return (
     <>
@@ -67,9 +68,14 @@ export default function CardWatchlistMovie({ watchlistStorage }: props) {
                     alt="img-card-movie"
                   />
                   <div className={classes.containerButtons}>
-                    <Link to={"/movie/" + filme.id} className={classes.link}>watch a movie</Link>
-                    <button onClick={() => removeFilmeWatchlist(index)} className={classes.link}>
-                      remove
+                    <Link to={"/movie/" + filme.id} className={classes.link}>
+                      <VisibilityIcon />
+                    </Link>
+                    <button
+                      onClick={() => removeFilmeWatchlist(index)}
+                      className={classes.link}
+                    >
+                      <DeleteIcon />
                     </button>
                   </div>
 

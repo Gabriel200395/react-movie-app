@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { styles } from "./styles";
-import { Pagination, Stack, Container } from "@mui/material";
+import { Pagination, Stack, Container } from "@mui/material"; 
 import Skeleton from "@mui/material/Skeleton";
 import no_image from "../../assets/img/no_image.jpg";
 import star from "../../assets/img/star.png";

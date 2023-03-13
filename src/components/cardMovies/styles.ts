@@ -33,13 +33,13 @@ export const styles = makeStyles({
   cardText: {
     color: "#ebeef5",
     fontFamily: "Poppins, sans-serif",
-    fontWeight: "400px",
+    fontWeight: "400",
     fontSize: "14px",
     marginTop: "16px",
   },
 
   cardImg: {
-    height: "400px",
+    height: "400",
     width: "266px",
     borderRadius: "8px",
   },
@@ -59,7 +59,7 @@ export const styles = makeStyles({
     alignItems: "center",
     justifyContent: "center",
     fontFamily: "Poppins, sans-serif",
-    fontWeight: "400px",
+    fontWeight: "400",
     fontSize: "14px",
   },
 

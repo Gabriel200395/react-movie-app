@@ -66,7 +66,7 @@ export const styles = makeStyles({
     alignItems: "center",
     justifyContent: "center",
     fontFamily: "Poppins, sans-serif",
-    fontWeight: "400px",
+    fontWeight: "400",
     fontSize: "14px",
     marginBottom: "24px", 
   },

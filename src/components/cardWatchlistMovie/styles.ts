@@ -16,7 +16,7 @@ export const styles = makeStyles({
     gridGap: "20px 20px",
     justifyContent: "center",
     backgroundColor: "transparent",
-    paddingBottom: "30px"
+    paddingBottom: "30px",
   },
   cardItem: {
     display: "flex",
@@ -33,13 +33,13 @@ export const styles = makeStyles({
   cardText: {
     color: "#ebeef5",
     fontFamily: "Poppins, sans-serif",
-    fontWeight: "400px",
+    fontWeight: "400",
     fontSize: "14px",
     marginTop: "16px",
   },
 
   cardImg: {
-    height: "400px",
+    height: "400",
     width: "266px",
     borderRadius: "8px",
   },
@@ -59,37 +59,37 @@ export const styles = makeStyles({
     alignItems: "center",
     justifyContent: "center",
     fontFamily: "Poppins, sans-serif",
-    fontWeight: "400px",
+    fontWeight: "400",
     fontSize: "14px",
   },
 
   cardVote: {
     marginLeft: "5px",
-  }, 
+  },
 
   containerButtons: {
-    display:"flex", 
-    justifyContent:"space-between", 
+    display: "flex",
+    justifyContent: "space-between",
     alingItems: "center",
-    marginTop: "20px"
+    marginTop: "20px",
   },
 
   link: {
     borderRadius: "4px",
     display: "flex",
     justifyContent: "center",
-    color: "#ebeef5",
+    color: "#c4c6cb",
     fontFamily: "Poppins, sans-serif",
-    fontWeight: "400px",
+    fontWeight: "400",
     fontSize: "14px",
-    backgroundColor: "rgba(0, 0, 0, 0.65)",
-    textDecoration:"none",
-    padding:"10px 10px 10px 10px",
-    border:"none",
-    cursor: "pointer"
-  },   
+    backgroundColor: "rgb(28 20 20 / 65%);",
+    textDecoration: "none",
+    padding: "10px 10px 10px 10px",
+    border: "none",
+    cursor: "pointer",
+  },
 
   spacing: {
-    paddingBottom: "60px"
-  }
+    paddingBottom: "60px",
+  },
 });
