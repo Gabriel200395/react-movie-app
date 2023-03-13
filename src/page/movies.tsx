@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import { Response } from "../types/response";
+import { useCallback, useEffect, useMemo } from "react";
 import { Typography } from "@mui/material";
 import {
   useDebounce,
@@ -7,12 +6,12 @@ import {
   useSearchMovie,
   useMovies,
 } from "../hooks";
+import { Response } from "../types/response";
 import Movies from "../components/cardMovies";
 import SearchMovie from "../components/search_movie";
 import Header from "../components/header";
 
 export default function Home() {
-  const [moviesData, setMoviesData] = useState<Response>();
   const [pageHome, setPageHome] = useLocalStorage("pageHome", 1);
   const [fieldMovie, setFieldMovie] = useLocalStorage("fieldMovie", "");
   const [pageFilme, setPageFilme] = useLocalStorage("pageFilme", 1);
@@ -38,15 +37,8 @@ export default function Home() {
   const handleChangeField = (e: React.ChangeEvent<HTMLInputElement>) =>
     setFieldMovie(e.target.value);
 
-  useEffect(() => {
-    if (debounceTerm && searchMovie.data?.results) {
-      setMoviesData(searchMovie.data);
-    }
-
-    if (movies.data?.results && !debounceTerm) {
-      setMoviesData(movies?.data);
-    }
-  }, [movies, searchMovie]);
+  const filterPage =
+    debounceTerm && searchMovie.data ? searchMovie.data : movies.data;
 
   useEffect(() => {
     if (!fieldMovie.length) {
@@ -68,7 +60,7 @@ export default function Home() {
         fieldMovie={fieldMovie}
       />
       <Movies
-        moviesData={moviesData}
+        moviesData={filterPage}
         page={debounceTerm ? pageFilme : pageHome}
         onChange={debounceTerm ? handleChangePageFilme : handleChangePageHome}
       />
