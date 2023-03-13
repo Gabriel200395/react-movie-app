@@ -60,12 +60,13 @@ export default function Home() {
         fieldMovie={fieldMovie}
       />
       <Movies moviesData={filterPage} />
-
-      <PaginationMovies
-        total_pages={filterPage?.total_pages}
-        page={debounceTerm ? pageFilme : pageHome}
-        onChange={debounceTerm ? handleChangePageFilme : handleChangePageHome}
-      />
+      {filterPage?.results.length && (
+        <PaginationMovies
+          total_pages={filterPage?.total_pages}
+          page={debounceTerm ? pageFilme : pageHome}
+          onChange={debounceTerm ? handleChangePageFilme : handleChangePageHome}
+        />
+      )}
     </>
   );
 }

@@ -25,11 +25,13 @@ export default function NowPlaying() {
     <>
       <Header />
       <Movies moviesData={data} />
-      <PaginationMovies
-        total_pages={data?.total_pages}
-        page={page}
-        onChange={handleChangePageTopRatedMovie}
-      />
+      {data?.results.length && (
+        <PaginationMovies
+          total_pages={data.total_pages}
+          page={page}
+          onChange={handleChangePageTopRatedMovie}
+        />
+      )}
     </>
   );
 }

@@ -1,7 +1,8 @@
 import { Container } from "@mui/system";
 import { styles } from "./styles";
+import { cardPropsMovesId } from "../../types/cardPropsMovesId"; 
 import no_image from "../../assets/img/no_image.jpg";
-import { cardPropsMovesId } from "../../types/cardPropsMovesId";
+
 
 export default function CardMovesId({ cast }: cardPropsMovesId) {
   const classes = styles();

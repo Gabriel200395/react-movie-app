@@ -1,12 +1,12 @@
 import { styles } from "./styles";
-import star from "../../assets/img/star.png";
 import { MovieDetailsProps } from "../../types/movieDetails";
 import { Typography, Container, Box, Grid, Button } from "@mui/material";
 import { textData } from "../../utils/textDataMovieId,";
 import { dataItems } from "../../helpers/textsMovies";
-import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
-import { Movie } from "../../types/movie";
+import star from "../../assets/img/star.png";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
+import no_image from "../../assets/img/no_image.jpg";
 
 export default function MovieDetails({ data }: MovieDetailsProps) {
   const classes = styles();
@@ -23,15 +23,15 @@ export default function MovieDetails({ data }: MovieDetailsProps) {
         return !duplicates;
       })
     );
-
   return (
     <Container>
       <Box className={classes.containerDetails}>
         <Grid>
           <img
             src={
-              data?.poster_path &&
-              "http://image.tmdb.org/t/p/w780/" + data?.poster_path
+              data?.poster_path
+                ? "http://image.tmdb.org/t/p/w780/" + data?.poster_path
+                : no_image
             }
             alt="img"
             className={classes.img}
@@ -42,7 +42,13 @@ export default function MovieDetails({ data }: MovieDetailsProps) {
           <Typography variant="h5" className={classes.subTitle}>
             Part of the journey is the end.
           </Typography>
-          <Typography sx={{mt: 1, mb: 3}} variant="subtitle1" className={classes.text}>{data?.overview}</Typography>
+          <Typography
+            sx={{ mt: 1, mb: 3 }}
+            variant="subtitle1"
+            className={classes.text}
+          >
+            {data?.overview}
+          </Typography>
           <Grid className={classes.stars}>
             <img src={star} alt={star} />
             <span className={classes.vote}>{data?.vote_average}</span>

@@ -1,8 +1,9 @@
-import LOGO from "../../assets/img/logo.png";
 import { AppBar, Toolbar, Container } from "@mui/material";
 import { Link } from "react-router-dom";
 import { styles } from "./styles";
-import { Links } from "../../helpers/links";
+import { Links } from "../../helpers/links"; 
+import LOGO from "../../assets/img/logo.png";
+
 
 export default function Header() {
   const classes = styles();

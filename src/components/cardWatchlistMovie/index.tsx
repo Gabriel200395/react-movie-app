@@ -2,12 +2,13 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { styles } from "./styles";
 import { Container } from "@mui/material";
+import { Movie } from "../../types/movie";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Skeleton from "@mui/material/Skeleton";
 import no_image from "../../assets/img/no_image.jpg";
 import star from "../../assets/img/star.png";
-import { Movie } from "../../types/movie";
+
 
 interface props {
   watchlistStorage: Movie[] | undefined;
