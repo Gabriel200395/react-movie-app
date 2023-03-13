@@ -33,6 +33,7 @@ export default function CardWatchlistMovie({ watchlistStorage }: props) {
     localStorage.setItem("Watchlist", JSON.stringify(removeId));
   };
 
+
   return (
     <>
       <Container maxWidth="xl">
