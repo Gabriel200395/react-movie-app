@@ -1,10 +1,19 @@
 import { Typography } from "@mui/material";
+import { useState } from "react";
 import Movies from "../components/cardMovies";
-import usePlayingMovie from "../hooks/usePlayingMovie";
+import Header from "../components/header";
+import { usePlayingMovie, useLocalStorage } from "../hooks";
 
 export default function NowPlaying() {
-  const { playingMovie, page, handleChangePagePlayingMovie, error } =
-    usePlayingMovie();
+  const [page, setPage] = useLocalStorage("playingMovie", 1);
+  const { data, error } = usePlayingMovie(page);
+
+  const handleChangePagePlayingMovie = (
+    event: React.ChangeEvent<unknown>,
+    value: number
+  ) => {
+    setPage(value);
+  };
 
   if (error) {
     <Typography variant="h4" textAlign="center" color="#ebeef5">
@@ -13,12 +22,13 @@ export default function NowPlaying() {
   }
 
   return (
-    <div>
+    <>
+      <Header />
       <Movies
-        moviesData={playingMovie}
+        moviesData={data}
         page={page}
         onChange={handleChangePagePlayingMovie}
       />
-    </div>
+    </>
   );
 }

@@ -1,10 +1,18 @@
+import { useTopRatedMovie, useLocalStorage } from "../hooks";
 import { Typography } from "@mui/material";
 import Movies from "../components/cardMovies";
-import useTopRatedMovie from "../hooks/useTopRatedMovie";
+import Header from "../components/header";
 
 export default function NowPlaying() {
-  const { topRatedMovie, page, handleChangePageTopRatedMovie, error } =
-    useTopRatedMovie();
+  const [page, setPage] = useLocalStorage("pageTopRatedMovie", 1);
+  const { data, error } = useTopRatedMovie(page);
+
+  const handleChangePageTopRatedMovie = (
+    event: React.ChangeEvent<unknown>,
+    value: number
+  ) => {
+    setPage(value);
+  };
 
   if (error) {
     <Typography variant="h4" textAlign="center" color="#ebeef5">
@@ -13,12 +21,13 @@ export default function NowPlaying() {
   }
 
   return (
-    <div>
+    <>
+      <Header />
       <Movies
-        moviesData={topRatedMovie}
+        moviesData={data}
         page={page}
         onChange={handleChangePageTopRatedMovie}
       />
-    </div>
+    </>
   );
 }

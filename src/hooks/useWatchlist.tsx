@@ -1,7 +1,7 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import { Movie } from "../types/movie";
 
-export default function useWatchList(){
+export function useWatchList(){
 
     const [watchlistStorage, setWatchlistStorage] = useState<Movie[]>();
     const [filterMovie, setFilterMovie] = useState<Movie[]>();

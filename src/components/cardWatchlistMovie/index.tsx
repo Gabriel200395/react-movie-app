@@ -38,7 +38,7 @@ export default function CardWatchlistMovie({ watchlistStorage }: props) {
       <Container maxWidth="xl">
         <div className={classes.containerCard}>
           {loading ? (
-            <div className={classes.spacing}>
+            <>
               {films?.map((filme) => (
                 <Skeleton
                   sx={{
@@ -51,7 +51,7 @@ export default function CardWatchlistMovie({ watchlistStorage }: props) {
                   key={filme.id}
                 />
               ))}
-            </div>
+            </>
           ) : (
             <>
               {films?.map((filme, index) => (

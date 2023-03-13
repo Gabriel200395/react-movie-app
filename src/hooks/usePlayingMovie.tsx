@@ -1,7 +1,5 @@
 import { useQuery } from "react-query";
-import { useEffect, useState } from "react";
 import { Response } from "../types/response";
-import { useLocalStorage } from "./useLocalStorage";
 
 const fetchPlayingMovie = async (page: number): Promise<Response> => {
   const data = await fetch(
@@ -13,32 +11,11 @@ const fetchPlayingMovie = async (page: number): Promise<Response> => {
   return response;
 };
 
-export default function usePlayingMovie() {
-  const [page, setPage] = useLocalStorage("playingMovie", 1);
-  const [playingMovie, setPlayingMovie] = useState<Response>();
-
+export function usePlayingMovie(page: number) {
   const getMoviePlaying = useQuery({
     queryKey: [["nowPlayingMovie", page]],
     queryFn: () => fetchPlayingMovie(page),
-  });
+  }); 
 
-  useEffect(() => {
-    if (getMoviePlaying.data?.results) {
-      setPlayingMovie(getMoviePlaying.data);
-    }
-  }, [getMoviePlaying]);
-
-  const handleChangePagePlayingMovie = (
-    event: React.ChangeEvent<unknown>,
-    value: number
-  ) => {
-    setPage(value);
-  };
-
-  return {
-    playingMovie,
-    handleChangePagePlayingMovie,
-    page,
-    error: getMoviePlaying.error,
-  };
+  return getMoviePlaying
 }

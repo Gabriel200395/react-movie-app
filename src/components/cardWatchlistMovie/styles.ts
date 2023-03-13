@@ -13,7 +13,7 @@ export const styles = makeStyles({
   containerCard: {
     display: "grid",
     gridTemplateColumns: "repeat(auto-fit, minmax(282px, 282px))",
-    gridGap: "30px 30px",
+    gridGap: "20px 20px",
     justifyContent: "center",
     backgroundColor: "transparent",
     paddingBottom: "30px"

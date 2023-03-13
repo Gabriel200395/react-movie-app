@@ -1,7 +1,5 @@
 import { useQuery } from "react-query";
-import { useEffect, useState } from "react";
 import { Response } from "../types/response";
-import { useLocalStorage } from "../hooks/useLocalStorage";
 
 const fetchTopRatedMovie = async (page: number): Promise<Response> => {
   const data = await fetch(
@@ -12,32 +10,11 @@ const fetchTopRatedMovie = async (page: number): Promise<Response> => {
   return response;
 };
 
-export default function useTopRatedMovie() {
-  const [page, setPage] = useLocalStorage("pageTopRatedMovie", 1);
-  const [topRatedMovie, setTopRatedMovie] = useState<Response>();
-
+export function useTopRatedMovie(page: number) {
   const getTopRatedMovie = useQuery({
     queryKey: [["topRatedMovie", page]],
     queryFn: () => fetchTopRatedMovie(page),
   });
 
-  useEffect(() => {
-    if (getTopRatedMovie.data?.results) {
-      setTopRatedMovie(getTopRatedMovie.data);
-    }
-  }, [getTopRatedMovie]);
-
-  const handleChangePageTopRatedMovie = (
-    event: React.ChangeEvent<unknown>,
-    value: number
-  ) => {
-    setPage(value);
-  };
-
-  return {
-    page,
-    handleChangePageTopRatedMovie,
-    topRatedMovie,
-    error: getTopRatedMovie.error,
-  };
+  return getTopRatedMovie;
 }

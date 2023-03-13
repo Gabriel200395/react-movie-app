@@ -1,14 +1,16 @@
 import CardWatchlistMovie from "../components/cardWatchlistMovie";
 import SearchMovie from "../components/search_movie";
 import { Typography } from "@mui/material";
-import useWatchList from "../hooks/useWatchlist";
+import {useWatchList} from "../hooks";
+import Header from "../components/header";
 
 export default function Watchlist() {
   const { fieldMovie, handleChangeField, filterMovie, storage } =
     useWatchList();
-    
+
   return (
-    <div>
+    <>
+      <Header />
       {storage?.length ? (
         <>
           <SearchMovie
@@ -22,6 +24,6 @@ export default function Watchlist() {
           You have not added any movies watchlist 😎
         </Typography>
       )}
-    </div>
+    </>
   );
 }

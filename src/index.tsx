@@ -9,6 +9,7 @@ import NowPlaying from "./page/nowPlaying";
 import TopRated from "./page/topRated";
 import Watchlist from "./page/watchlist";
 import Header from "./components/header";
+import App from "./App";
 
 const queryClient = new QueryClient();
 
@@ -16,22 +17,10 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 
-root.render(
-  <div>
-    <QueryClientProvider client={queryClient}>
-    <BrowserRouter>
-    <Header />
-    <Router>
-      <Route path="/" element={<Home />} />
-      <Route path="/watchlist" element={<Watchlist />} />
-      <Route path="/now-playing" element={<NowPlaying />} />
-      <Route path="/top-rated" element={<TopRated />} />
-      <Route path="/movie/:id" element={<MoveId />} />
-    </Router>
-    </BrowserRouter>
-  </QueryClientProvider>
-  </div>
-);
+//[] organizar codigo com melhores praticas
+//[] fazer teste unitários
+
+root.render(<App />);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
