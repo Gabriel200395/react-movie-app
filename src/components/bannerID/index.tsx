@@ -13,8 +13,8 @@ export default function BannerIDMovie({ data }: BannerIDMovieProps) {
         style={{
           backgroundImage: `linear-gradient(180deg,rgba(54, 44, 146, 0.4) 0%, 
           rgba(18, 98, 151, 0.4) 100%),url(${
-            data?.backdrop_path ?
-            "http://image.tmdb.org/t/p/w1280/" + data?.backdrop_path : no_image
+            data?.backdrop_path &&
+            "http://image.tmdb.org/t/p/w1280/" + data?.backdrop_path 
           }) `,
           backgroundSize:  data?.backdrop_path ? "cover" : "contain",
           backgroundPosition: "50% 50%", 
