@@ -7,13 +7,15 @@ const fetchSearchMovie = async (
   pageFilme: number
 ): Promise<Response | null> => {
   if (debounceTerm) {
-    const data = await fetch(
+    const response = await fetch(
       `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_ACCESS_KEY}&language=en-US&page=${pageFilme}&query=${fieldMovie}`
     );
 
-    const response = await data.json();
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
 
-    return response;
+    return response.json();
   }
 
   return null;
@@ -23,8 +25,15 @@ export const useSearchMovie = (
   debounceTerm: string,
   fieldMovie: string,
   pageFilme: number
-) =>
-  useQuery({
+) => {
+  const { data, error, isLoading } = useQuery({
     queryKey: ["searchMovie", debounceTerm, pageFilme],
     queryFn: () => fetchSearchMovie(debounceTerm, fieldMovie, pageFilme),
   });
+
+  return {
+    data,
+    error,
+    isLoading,
+  };
+};

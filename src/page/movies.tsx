@@ -11,7 +11,6 @@ import SearchMovie from "../components/search_movie";
 import Header from "../components/header";
 import PaginationMovies from "../components/paginationMovies";
 
-
 export default function Home() {
   const [pageHome, setPageHome] = useLocalStorage("pageHome", 1);
   const [fieldMovie, setFieldMovie] = useLocalStorage("fieldMovie", "");
@@ -31,8 +30,7 @@ export default function Home() {
   const handleChangePageHome = (
     event: React.ChangeEvent<unknown>,
     value: number
-  ) => { 
-
+  ) => {
     setPageHome(value);
   };
 
@@ -51,7 +49,7 @@ export default function Home() {
   if (movies.error) {
     return (
       <Typography variant="h4" textAlign="center" color="#ebeef5">
-         Movies connection error 👀
+        Movies connection error 👀
       </Typography>
     );
   }
