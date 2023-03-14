@@ -2,17 +2,25 @@ import { useQuery } from "react-query";
 import { Response } from "../types/response";
 
 const fetchMovies = async (pageHome: number): Promise<Response> => {
-  let data = await fetch(
+  let response = await fetch(
     `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_ACCESS_KEY}&language=en-US&page=${pageHome}`
   );
-
-  const response = await data.json();
-
-  return response;
+  
+  if (!response.ok) {
+    throw new Error('Network response was not ok')
+  }
+  return response.json();
 };
 
-export const useMovies = (pageHome: number) =>
-  useQuery<Response>({
+export const useMovies = (pageHome: number) => {
+  const { data, error, isLoading } = useQuery<Response>({
     queryKey: ["movies", pageHome],
     queryFn: () => fetchMovies(pageHome),
   });
+
+  return {
+    data,
+    isLoading,
+    error,
+  };
+};

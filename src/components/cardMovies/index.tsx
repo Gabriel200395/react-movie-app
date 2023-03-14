@@ -36,6 +36,7 @@ export default function CardMovies({
                   width={282}
                   height={480}
                   key={filme.id}
+                  role="skaleton"
                 />
               ))}
             </>

@@ -1,5 +1,4 @@
 import { Typography } from "@mui/material";
-import { useState } from "react";
 import Movies from "../components/cardMovies";
 import Header from "../components/header";
 import PaginationMovies from "../components/paginationMovies";
