@@ -15,29 +15,21 @@ export default function NowPlaying() {
     setPage(value);
   };
 
-  if (topRatedMovie.error) {
-    return (
-      <Typography variant="h4" textAlign="center" color="#ebeef5">
-        Top rated movie connection error 👀
-      </Typography>
-    );
-  }
-
   return (
     <>
       <Header />
 
-      {topRatedMovie.data?.results?.length ? (
-        <Movies moviesData={topRatedMovie.data} />
-      ) : (
+      {topRatedMovie.error ? (
         <Typography
           variant="h4"
           textAlign="center"
           color="#ebeef5"
           sx={{ pb: 40 }}
         >
-          Page Not Found 👀
+          Top rated movie connection error 👀
         </Typography>
+      ) : (
+        <Movies moviesData={topRatedMovie.data} />
       )}
 
       <PaginationMovies

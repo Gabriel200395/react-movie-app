@@ -48,29 +48,34 @@ export default function Home() {
     }
   }, [fieldMovie]);
 
-  if (movies.error) {
-    return (
-      <Typography variant="h4" textAlign="center" color="#ebeef5">
-        Movies connection error 👀
-      </Typography>
-    );
-  }
-
   return (
     <>
       <Header />
-      <SearchMovie
-        handleChangeField={handleChangeField}
-        fieldMovie={fieldMovie}
-      />
-      <Movies moviesData={filterPage} />
-      {filterPage?.results?.length && (
-        <PaginationMovies
-          total_pages={filterPage?.total_pages}
-          page={debounceTerm ? pageFilme : pageHome}
-          onChange={debounceTerm ? handleChangePageFilme : handleChangePageHome}
-        />
+
+      {movies.error ? (
+        <Typography
+          variant="h4"
+          textAlign="center"
+          color="#ebeef5"
+          sx={{ pb: 40 }}
+        >
+          Movies connection error 👀
+        </Typography>
+      ) : (
+        <>
+          <SearchMovie
+            handleChangeField={handleChangeField}
+            fieldMovie={fieldMovie}
+          />
+          <Movies moviesData={filterPage} />
+        </>
       )}
+
+      <PaginationMovies
+        total_pages={filterPage?.total_pages}
+        page={debounceTerm ? pageFilme : pageHome}
+        onChange={debounceTerm ? handleChangePageFilme : handleChangePageHome}
+      />
     </>
   );
 }
