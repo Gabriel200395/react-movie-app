@@ -9,9 +9,11 @@ import * as useMovies from "../hooks/useMovies";
 import * as useSearchMovie from "../hooks/useSearchMovie";
 
 jest.useFakeTimers();
+window.scroll = jest.fn();
 
 const mockMovies = jest.spyOn(useMovies, "useMovies");
-const mockSearchMovie = jest.spyOn(useSearchMovie, "useSearchMovie");
+const mockSearchMovie = jest.spyOn(useSearchMovie, "useSearchMovie"); 
+
 
 const queryClient = new QueryClient();
 
