@@ -25,6 +25,7 @@ export default function Home() {
     value: number
   ) => {
     setPageFilme(value);
+    window.scroll(0, 0);
   };
 
   const handleChangePageHome = (
@@ -32,6 +33,7 @@ export default function Home() {
     value: number
   ) => {
     setPageHome(value);
+    window.scroll(0, 0);
   };
 
   const handleChangeField = (e: React.ChangeEvent<HTMLInputElement>) =>

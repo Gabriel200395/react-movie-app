@@ -1,4 +1,5 @@
 import { makeStyles } from "@mui/styles";
+import { minHeight } from "@mui/system";
 
 export const styles = makeStyles({
   stack: {
@@ -17,6 +18,7 @@ export const styles = makeStyles({
     gridGap: "30px 30px",
     justifyContent: "center",
     backgroundColor: "transparent",
+    height: "100%",
   },
   cardItem: {
     display: "flex",
@@ -65,5 +67,9 @@ export const styles = makeStyles({
 
   cardVote: {
     marginLeft: "5px",
+  },
+
+  container: {
+    height: "100%",
   },
 });

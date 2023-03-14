@@ -1,15 +1,13 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { styles } from "./styles";
-import { Container } from "@mui/material"; 
+import { Container } from "@mui/material";
 import { MoviesProps } from "../../types/cardMovies";
 import Skeleton from "@mui/material/Skeleton";
 import no_image from "../../assets/img/no_image.jpg";
 import star from "../../assets/img/star.png";
 
-export default function CardMovies({
-  moviesData,
-}: MoviesProps) {
+export default function CardMovies({ moviesData }: MoviesProps) {
   const [loading, setLoading] = useState(true);
 
   const classes = styles();
@@ -18,10 +16,10 @@ export default function CardMovies({
     setTimeout(() => {
       setLoading(false);
     }, 1500);
-  }, []); 
-  
+  }, []);
+
   return (
-    <>
+    <div className={classes.container}>
       <Container maxWidth="xl">
         <div className={classes.containerCard}>
           {loading ? (
@@ -70,6 +68,6 @@ export default function CardMovies({
           )}
         </div>
       </Container>
-    </>
+    </div>
   );
 }
