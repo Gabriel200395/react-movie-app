@@ -10,7 +10,9 @@
 - Clone o projeto: `https://github.com/Gabriel200395/react-movie-app.git`
 - Entrar na pasta do projeto: `cd react-movie-app`
 - baixe na aplicação: `yarn`
-- Iniciar a aplicação: `yarn start`
+- Iniciar a aplicação: `yarn start` 
+- Testar a aplicação: `yarn test`
+
 
 Irá abrir uma página no browser (se não abrir, vá até [http://localhost:3000](http://localhost:3000/)).
 
