@@ -7,20 +7,26 @@ type CredentialsMovie = {
 const fetchCredentialsMovie = async (
   id: string | undefined
 ): Promise<CredentialsMovie> => {
-  const data = await fetch(
+  const response = await fetch(
     `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_ACCESS_KEY}`
   );
 
-  const response = data.json();
+  if (!response.ok) {
+    throw new Error("Network response was not ok");
+  }
 
-  return response;
+  return response.json();
 };
 
 export function useCredentialsMovie(id: string | undefined) {
-  const getCredentialsMovie = useQuery({
+  const { data, error, isLoading } = useQuery({
     queryKey: [["CredentialsMovie", id]],
     queryFn: () => fetchCredentialsMovie(id),
   });
 
-  return getCredentialsMovie;
+  return {
+    data,
+    error,
+    isLoading,
+  };
 }

@@ -15,11 +15,9 @@ export default function NowPlaying() {
     setPage(value);
   };
 
-
   return (
     <>
       <Header />
-      <Movies moviesData={playingMovie.data} />
 
       {playingMovie.error ? (
         <Typography
@@ -28,15 +26,19 @@ export default function NowPlaying() {
           color="#ebeef5"
           sx={{ pb: 40 }}
         >
-        Now Playing connection error 👀
+          Now Playing connection error 👀
         </Typography>
       ) : (
+        <Movies moviesData={playingMovie.data} />
+      )}
+
+      {playingMovie.error || playingMovie.data?.results ? (
         <PaginationMovies
           total_pages={playingMovie?.data?.total_pages}
           page={page}
           onChange={handleChangePagePlayingMovie}
         />
-      )}
+      ) : null}
     </>
   );
 }

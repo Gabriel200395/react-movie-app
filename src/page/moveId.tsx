@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useMoveId, useCredentialsMovie } from "../hooks";
+import { useMovieId, useCredentialsMovie } from "../hooks";
 import { Typography } from "@mui/material";
 import CardMovesId from "../components/cardMoviesId";
 import MovieDetails from "../components/movieDetails";
@@ -10,27 +10,36 @@ import { useEffect } from "react";
 export default function MoveId() {
   const { id } = useParams<{ id?: string }>();
 
-  const getMovieId = useMoveId(id);
+  const getMovieId = useMovieId(id);
   const getCredentialsMovie = useCredentialsMovie(id);
 
   useEffect(() => {
     window.scroll(0, 0);
   }, []);
 
-  if (getMovieId.error || getCredentialsMovie.error) {
-    return (
-      <Typography variant="h4" textAlign="center" color="#ebeef5">
-        Server connection error 👀
-      </Typography>
-    );
-  }
-
   return (
     <>
       <Header />
-      <BannerIDMovie data={getMovieId.data} />
-      <MovieDetails data={getMovieId.data} />
-      <CardMovesId cast={getCredentialsMovie.data?.cast} />
+      {getMovieId.error ? (
+        <Typography variant="h4" textAlign="center" color="#ebeef5">
+          Movie id connection error 👀
+        </Typography>
+      ) : (
+        <>
+          <BannerIDMovie data={getMovieId.data} />
+          <MovieDetails data={getMovieId.data} />
+        </>
+      )}
+
+      {getCredentialsMovie.error ? (
+        <div className="error">
+          <Typography variant="h4" textAlign="center" color="#ebeef5">
+            Error search actors movies 👀
+          </Typography>
+        </div>
+      ) : (
+        <CardMovesId cast={getCredentialsMovie.data?.cast} />
+      )}
     </>
   );
 }

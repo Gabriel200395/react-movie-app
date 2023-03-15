@@ -32,11 +32,13 @@ export default function NowPlaying() {
         <Movies moviesData={topRatedMovie.data} />
       )}
 
-      <PaginationMovies
-        total_pages={topRatedMovie.data?.total_pages}
-        page={page}
-        onChange={handleChangePageTopRatedMovie}
-      />
+      {topRatedMovie.error || topRatedMovie.data?.results ? (
+        <PaginationMovies
+          total_pages={topRatedMovie.data?.total_pages}
+          page={page}
+          onChange={handleChangePageTopRatedMovie}
+        />
+      ) : null}
     </>
   );
 }

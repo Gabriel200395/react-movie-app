@@ -23,6 +23,7 @@ export default function MovieDetails({ data }: MovieDetailsProps) {
         return !duplicates;
       })
     );
+
   return (
     <Container>
       <Box className={classes.containerDetails}>

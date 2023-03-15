@@ -71,11 +71,13 @@ export default function Home() {
         </>
       )}
 
-      <PaginationMovies
-        total_pages={filterPage?.total_pages}
-        page={debounceTerm ? pageFilme : pageHome}
-        onChange={debounceTerm ? handleChangePageFilme : handleChangePageHome}
-      />
+      {movies.error || movies.data?.results ? (
+        <PaginationMovies
+          total_pages={filterPage?.total_pages}
+          page={debounceTerm ? pageFilme : pageHome}
+          onChange={debounceTerm ? handleChangePageFilme : handleChangePageHome}
+        />
+      ) : null}
     </>
   );
 }

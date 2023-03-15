@@ -5,7 +5,7 @@ import { useSearchMovie } from "./useSearchMovie";
 import { useTopRatedMovie } from "./useTopRatedMovie";
 import { useWatchList } from "./useWatchlist";
 import { useMovies } from "./useMovies";
-import { useMoveId } from "./useMoveId";
+import { useMovieId } from "./useMovieId";
 import { useCredentialsMovie } from "./useCredentialsMovie";
 
 export {
@@ -16,6 +16,6 @@ export {
   useTopRatedMovie,
   useWatchList,
   useMovies,
-  useMoveId,
+  useMovieId,
   useCredentialsMovie,
 };
