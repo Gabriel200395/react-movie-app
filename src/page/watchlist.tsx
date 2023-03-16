@@ -1,7 +1,6 @@
 import CardWatchlistMovie from "../components/cardWatchlistMovie";
 import SearchMovie from "../components/search_movie";
 import { Typography } from "@mui/material";
-import { useWatchList } from "../hooks";
 import Header from "../components/header";
 import { ChangeEvent, useEffect, useState } from "react";
 import { Movie } from "../types/movie";
