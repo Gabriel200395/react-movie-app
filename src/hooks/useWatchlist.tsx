@@ -1,38 +1,21 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import { Movie } from "../types/movie";
 
-export function useWatchList(){
+export function useWatchList() {
+  const [watchlistStorage, setWatchlistStorage] = useState<Movie[]>();
+  const [filterMovie, setFilterMovie] = useState<Movie[]>();
 
-    const [watchlistStorage, setWatchlistStorage] = useState<Movie[]>();
-    const [filterMovie, setFilterMovie] = useState<Movie[]>();
-    const [fieldMovie, setfieldMovie] = useState("");
-  
-    let storage = JSON.parse(localStorage.getItem("Watchlist") as string);
-  
-    useEffect(() => {
-      setWatchlistStorage(storage);
-      setFilterMovie(storage);
-    }, []);
-  
-    const handleChangeField = (e: ChangeEvent<HTMLInputElement>) => {
-      setfieldMovie(e.target.value);
-      setFilterMovie(
-        watchlistStorage?.filter((item: Movie) =>
-          item.title
-            ?.toLowerCase()
-            .toUpperCase()
-            .includes(e.target.value.toLowerCase().toUpperCase())
-        )
-      );
-    };
+  let storage = JSON.parse(localStorage.getItem("Watchlist") as string);
 
+  useEffect(() => {
+    setWatchlistStorage(storage);
+    setFilterMovie(storage);
+  }, []);
 
-    return {
-        filterMovie, 
-        fieldMovie, 
-        handleChangeField,
-        storage
-    }
-
-
+  return {
+    filterMovie,
+    watchlistStorage,
+    setFilterMovie,
+    storage
+  };
 }

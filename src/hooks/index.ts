@@ -3,7 +3,7 @@ import { useLocalStorage } from "./useLocalStorage";
 import { usePlayingMovie } from "./usePlayingMovie";
 import { useSearchMovie } from "./useSearchMovie";
 import { useTopRatedMovie } from "./useTopRatedMovie";
-import { useWatchList } from "./useWatchlist";
+import { useWatchList } from "./useWatchList";
 import { useMovies } from "./useMovies";
 import { useMovieId } from "./useMovieId";
 import { useCredentialsMovie } from "./useCredentialsMovie";

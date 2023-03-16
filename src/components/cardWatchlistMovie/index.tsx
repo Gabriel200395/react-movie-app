@@ -67,12 +67,17 @@ export default function CardWatchlistMovie({
                     alt="img-card-movie"
                   />
                   <div className={classes.containerButtons}>
-                    <Link to={"/movie/" + filme.id} className={classes.link}>
+                    <Link
+                      to={"/movie/" + filme.id}
+                      className={classes.link}
+                      data-testid="watch-movie"
+                    >
                       <VisibilityIcon />
                     </Link>
                     <button
                       onClick={() => removeFilmeWatchlist(index)}
                       className={classes.link}
+                      data-testid="remove-list-movie"
                     >
                       <DeleteIcon />
                     </button>

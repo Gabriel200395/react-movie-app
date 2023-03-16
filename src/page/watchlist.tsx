@@ -1,12 +1,36 @@
 import CardWatchlistMovie from "../components/cardWatchlistMovie";
 import SearchMovie from "../components/search_movie";
 import { Typography } from "@mui/material";
-import {useWatchList} from "../hooks";
+import { useWatchList } from "../hooks";
 import Header from "../components/header";
+import { ChangeEvent, useEffect, useState } from "react";
+import { Movie } from "../types/movie";
 
 export default function Watchlist() {
-  const { fieldMovie, handleChangeField, filterMovie, storage } =
-    useWatchList();
+  const [fieldMovie, setfieldMovie] = useState("");
+  const [watchlistStorage, setWatchlistStorage] = useState<Movie[]>();
+  const [filterMovie, setFilterMovie] = useState<Movie[]>();
+
+  let storage =
+    localStorage.getItem("Watchlist") &&
+    JSON.parse(localStorage.getItem("Watchlist") as string);
+
+  useEffect(() => {
+    setWatchlistStorage(storage);
+    setFilterMovie(storage);
+  }, []);
+
+  const handleChangeField = (e: ChangeEvent<HTMLInputElement>) => {
+    setfieldMovie(e.target.value);
+    setFilterMovie(
+      watchlistStorage?.filter((item: Movie) =>
+        item.title
+          ?.toLowerCase()
+          .toUpperCase()
+          .includes(e.target.value.toLowerCase().toUpperCase())
+      )
+    );
+  };
 
   return (
     <>
