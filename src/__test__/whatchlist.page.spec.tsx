@@ -13,16 +13,18 @@ jest.useFakeTimers();
 
 const queryClient = new QueryClient();
 
+const Component = () =>
+  render(
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
+        <Movie />
+      </BrowserRouter>
+    </QueryClientProvider>
+  );
+
 describe("<Movie />", () => {
   test("no movies on the list", () => {
-    render(
-      <QueryClientProvider client={queryClient}>
-        <BrowserRouter>
-          <Movie />
-        </BrowserRouter>
-      </QueryClientProvider>
-    );
-
+    Component();
     expect(
       screen.getByRole("heading", {
         name: /you have not added any movies watchlist 😎/i,
@@ -32,15 +34,7 @@ describe("<Movie />", () => {
 
   test("movie added to list", () => {
     storage.mockReturnValue(JSON.stringify([movieId]));
-
-    render(
-      <QueryClientProvider client={queryClient}>
-        <BrowserRouter>
-          <Movie />
-        </BrowserRouter>
-      </QueryClientProvider>
-    );
-
+    Component();
     act(() => jest.runAllTimers());
 
     expect(
@@ -52,17 +46,8 @@ describe("<Movie />", () => {
 
   test("movie not found", () => {
     storage.mockReturnValue(JSON.stringify([movieId]));
-
-    render(
-      <QueryClientProvider client={queryClient}>
-        <BrowserRouter>
-          <Movie />
-        </BrowserRouter>
-      </QueryClientProvider>
-    );
-
+    Component();
     act(() => jest.runAllTimers());
-
     fireEvent.change(screen.getByRole("textbox"), {
       target: {
         value: "teste",
@@ -78,19 +63,9 @@ describe("<Movie />", () => {
 
   test("remove movie", () => {
     storage.mockReturnValue(JSON.stringify([movieId]));
-
-    render(
-      <QueryClientProvider client={queryClient}>
-        <BrowserRouter>
-          <Movie />
-        </BrowserRouter>
-      </QueryClientProvider>
-    );
-
+    Component();
     act(() => jest.runAllTimers());
-
     fireEvent.click(screen.getByTestId("remove-list-movie"));
-
     expect(
       screen.queryByRole("img", {
         name: /img\-card\-movie/i,
@@ -101,7 +76,6 @@ describe("<Movie />", () => {
   test("navigation movie id", () => {
     const history = createMemoryHistory({ initialEntries: ["/watchlist"] });
     storage.mockReturnValue(JSON.stringify([movieId]));
-
     render(
       <QueryClientProvider client={queryClient}>
         <Router location={history.location} navigator={history}>
