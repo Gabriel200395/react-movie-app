@@ -21,6 +21,7 @@ body {
   width: 50px !important;
 }
 
+
 .MuiButtonBase-root.MuiPaginationItem-root.MuiPaginationItem-sizeMedium.MuiPaginationItem-outlined.MuiPaginationItem-rounded.MuiPaginationItem-page.css-2gftvx{
   background-color: #171e33 !important;
   color: #929396 !important;
@@ -30,6 +31,11 @@ body {
 }
 
 
+.css-2gftvx {
+  background-color: rgba(55, 62, 80, 0.8) !important;
+  height: 50px !important;
+  width: 50px !important;
+}
 
 @media (max-width: 768px) {
   .css-19xm0h7-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
