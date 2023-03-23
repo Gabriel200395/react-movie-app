@@ -9,8 +9,8 @@ body {
 
 .css-19xm0h7-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
   background-color: rgba(55, 62, 80, 0.8) !important;
-  height: 50px;
-  width: 50px;
+  height: 50px !important;
+  width: 50px !important;
 }
 
 .css-19xm0h7-MuiButtonBase-root-MuiPaginationItem-root {
