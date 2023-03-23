@@ -71,7 +71,7 @@ export default function Home() {
         </>
       )}
 
-      {movies.error || movies.data?.results ? (
+      {movies.error || filterPage?.results.length ? (
         <PaginationMovies
           total_pages={filterPage?.total_pages}
           page={debounceTerm ? pageFilme : pageHome}
