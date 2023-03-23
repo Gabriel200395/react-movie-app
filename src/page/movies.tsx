@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { Typography } from "@mui/material";
-import { makeStyles, createStyles } from "@mui/styles";
 import {
   useDebounce,
   useLocalStorage,
@@ -11,32 +10,6 @@ import Movies from "../components/cardMovies";
 import SearchMovie from "../components/search_movie";
 import Header from "../components/header";
 import PaginationMovies from "../components/paginationMovies";
-
-const useStyles = makeStyles(() =>
-  createStyles({
-    "@global": {
-      ".css-19xm0h7-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected": {
-        backgroundColor: " rgba(55, 62, 80, 0.8) !important",
-        height: "50px !important",
-        width: "50px !important",
-      },
-
-      ".css-19xm0h7-MuiButtonBase-root-MuiPaginationItem-root": {
-        backgroundColor: "#171e33 !important",
-        color: "#929396 !important",
-        border: "solid 1px #475069 !important",
-        height: "50px !important",
-        width: "50px !important",
-      },
-    },
-  })
-);
-
-const GlobalStyles = () => {
-  useStyles();
-
-  return null;
-};
 
 export default function Home() {
   const [pageHome, setPageHome] = useLocalStorage("pageHome", 1);
@@ -77,7 +50,6 @@ export default function Home() {
 
   return (
     <>
-      <GlobalStyles />
       <Header />
 
       {movies.error ? (
