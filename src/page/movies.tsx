@@ -1,4 +1,3 @@
-import "../global.css";
 import { useEffect } from "react";
 import { Typography } from "@mui/material";
 import {
