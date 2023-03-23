@@ -22,21 +22,6 @@ body {
 }
 
 
-/* .MuiButtonBase-root.MuiPaginationItem-root.MuiPaginationItem-sizeMedium.MuiPaginationItem-outlined.MuiPaginationItem-rounded.MuiPaginationItem-page.css-2gftvx{
-  background-color: #171e33 !important;
-  color: #929396 !important;
-  border: solid 1px #475069 !important;
-  height: 50px !important;
-  width: 50px !important;
-}
-
-.css-19xm0h7-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
-  background-color: rgba(55, 62, 80, 0.8) !important;
-  height: 50px !important;
-  width: 50px !important;
-}
- */
-
 .css-2gftvx {
   color: #929396 !important;
   border: solid 1px #475069 !important;
@@ -60,6 +45,17 @@ body {
     height: auto !important;
     width: auto !important;
   }
+
+  .css-2gftvx {
+    height: auto !important;
+    width: auto !important;
+  }
+
+  .css-2gftvx.Mui-selected {
+    height: auto !important;
+    width: auto !important;  
+  }
+  
 
   .css-fz1kdm {
     width: auto !important;
