@@ -1,8 +1,8 @@
 import { Typography } from "@mui/material";
+import { usePlayingMovie, useLocalStorage } from "../hooks";
 import Movies from "../components/cardMovies";
 import Header from "../components/header";
 import PaginationMovies from "../components/paginationMovies";
-import { usePlayingMovie, useLocalStorage } from "../hooks";
 
 export default function NowPlaying() {
   const [page, setPage] = useLocalStorage("playingMovie", 1);

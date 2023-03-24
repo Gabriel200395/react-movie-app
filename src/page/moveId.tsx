@@ -1,11 +1,11 @@
 import { useParams } from "react-router-dom";
 import { useMovieId, useCredentialsMovie } from "../hooks";
 import { Typography } from "@mui/material";
+import { useEffect } from "react";
 import CardMovesId from "../components/cardMoviesId";
 import MovieDetails from "../components/movieDetails";
 import BannerIDMovie from "../components/bannerID";
 import Header from "../components/header";
-import { useEffect } from "react";
 
 export default function MoveId() {
   const { id } = useParams<{ id?: string }>();
