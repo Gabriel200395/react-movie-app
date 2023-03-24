@@ -10,14 +10,12 @@
 - Clone o projeto: `https://github.com/Gabriel200395/react-movie-app.git`
 - Entrar na pasta do projeto: `cd react-movie-app`
 - baixe na aplicação: `yarn`
-- Iniciar a aplicação: `yarn start` 
+- Iniciar a aplicação: `yarn start`
 - Testar a aplicação: `yarn test`
-
 
 Irá abrir uma página no browser (se não abrir, vá até [http://localhost:3000](http://localhost:3000/)).
 
 ## :heart_eyes: Features
-
 
 <h4 align="left">
   <img src="./public/carregando-movie.png" /><br>
@@ -25,7 +23,7 @@ Irá abrir uma página no browser (se não abrir, vá até [http://localhost:300
 
 <h4 align="left">
   <img src="./public/tela-inicial.png" /><br>
-</h4> 
+</h4>
 
 <h4 align="left">
   <img src="./public/detalhes_movies.png" /><br>
@@ -41,6 +39,10 @@ Irá abrir uma página no browser (se não abrir, vá até [http://localhost:300
 
 <h4 align="left">
   <img src="./public/paginacao-initial.png" /><br>
+</h4>
+
+<h4 align="left">
+  <img src="./public/watchlist.png" /><br>
 </h4>
 
 ## :pencil: Autor
