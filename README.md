@@ -18,6 +18,11 @@ Irá abrir uma página no browser (se não abrir, vá até [http://localhost:300
 ## :heart_eyes: Features
 
 <h4 align="left">
+  <img src="./public/react-movie-test.gif" /><br>
+</h4>
+
+
+<h4 align="left">
   <img src="./public/carregando-movie.png" /><br>
 </h4>
 
