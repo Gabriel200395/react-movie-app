@@ -20,7 +20,19 @@ Irá abrir uma página no browser (se não abrir, vá até [http://localhost:300
 
 
 <h4 align="left">
+  <img src="./public/carregando-movie.png" /><br>
+</h4>
+
+<h4 align="left">
   <img src="./public/tela-inicial.png" /><br>
+</h4> 
+
+<h4 align="left">
+  <img src="./public/detalhes_movies.png" /><br>
+</h4>
+
+<h4 align="left">
+  <img src="./public/detalhes_movies1.png" /><br>
 </h4>
 
 <h4 align="left">
