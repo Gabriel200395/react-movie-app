@@ -20,7 +20,7 @@ Irá abrir uma página no browser (se não abrir, vá até [http://localhost:300
 
 
 <h4 align="left">
-  <img src="./public/paginacao-initial.png" /><br>
+  <img src="./public/tela-inicial.png" /><br>
 </h4>
 
 <h4 align="left">
