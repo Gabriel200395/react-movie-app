@@ -16,6 +16,21 @@
 
 Irá abrir uma página no browser (se não abrir, vá até [http://localhost:3000](http://localhost:3000/)).
 
+## :heart_eyes: Features
+
+
+<h4 align="left">
+  <img src="./public/paginacao-initial.png" /><br>
+</h4>
+
+<h4 align="left">
+  <img src="./public/paginacao-inicial-pesquisa.png" /><br>
+</h4>
+
+<h4 align="left">
+  <img src="./public/paginacao-initial.png" /><br>
+</h4>
+
 ## :pencil: Autor
 
 <table>
