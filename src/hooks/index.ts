@@ -6,6 +6,8 @@ import { useTopRatedMovie } from "./useTopRatedMovie";
 import { useMovies } from "./useMovies";
 import { useMovieId } from "./useMovieId";
 import { useCredentialsMovie } from "./useCredentialsMovie";
+import { useWatchlist } from "./useWatchlist";
+import { useMoviesPage } from "./useMoviesPage";
 
 export {
   useDebounce,
@@ -16,4 +18,6 @@ export {
   useMovies,
   useMovieId,
   useCredentialsMovie,
+  useWatchlist,
+  useMoviesPage,
 };
