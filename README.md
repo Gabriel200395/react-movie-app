@@ -21,7 +21,6 @@ Irá abrir uma página no browser (se não abrir, vá até [http://localhost:300
   <img src="./public/react-movie-test.gif" /><br>
 </h4>
 
-
 <h4 align="left">
   <img src="./public/carregando-movie.png" /><br>
 </h4>
@@ -39,15 +38,15 @@ Irá abrir uma página no browser (se não abrir, vá até [http://localhost:300
 </h4>
 
 <h4 align="left">
+  <img src="./public/watchlist.png" /><br>
+</h4>
+
+<h4 align="left">
   <img src="./public/paginacao-inicial-pesquisa.png" /><br>
 </h4>
 
 <h4 align="left">
   <img src="./public/paginacao-initial.png" /><br>
-</h4>
-
-<h4 align="left">
-  <img src="./public/watchlist.png" /><br>
 </h4>
 
 ## :pencil: Autor
